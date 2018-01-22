@@ -23,8 +23,8 @@ module.exports = {
 		dailyRotateFile:path.resolve(__dirname, '..', 'logs/daily.log')
 	},
 	//redis config
-	"redis": {"address": "10.99.113.48", "port": "6379", "passwd": "Hs1JlTXOGsDRtq8UH"},
-	"wxRedis": {"address": "10.99.113.69", "port": "6379", "passwd": "Hs1JlTXOGsDRtq8UH"},
+	"redis": {"address": "127.0.0.1", "port": "6379", "passwd": "Hs1JlTXOGsDRtq8UH"},
+	"wxRedis": {"address": "127.0.0.1", "port": "6379", "passwd": "Hs1JlTXOGsDRtq8UH"},
 	"token_secret": "generated_token_secret",//用于生成“授权token”的secret
 	"testValidCode" : true,
 	"whitelist": [

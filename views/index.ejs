@@ -1,178 +1,329 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<%- include common/meta.ejs %>
-	<title>湖北十大科技事件评选</title>
-	<script>
-		(function (doc, win) { 
-			var docEl = doc.documentElement,
-			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-			recalc = function () {
-			var clientWidth = docEl.clientWidth;
-			if (!clientWidth) return;
-			docEl.style.fontSize = parseInt(100 * (clientWidth / 320) * 320 / 640,10) + 'px';
-			};
-			if (!doc.addEventListener) return; 
-			doc.addEventListener('DOMContentLoaded', recalc, false);
-		})(document, window);
-	</script>
-	<style type="text/css">
-		.p-captcha svg{
-			width: 80vw !important;
-			height: 77vw !important;
-		}
-	</style>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <title>湖南省干部教育培训网络学院</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <!--<script type="text/javascript" src="jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="jPlayer-2.9.2/dist/add-on/jplayer.playlist.min.js"></script>-->
+    <!--<script src="PreloadJS-master/lib/preloadjs.min.js"></script>
+    <script src="SoundJS-master/lib/soundjs.min.js"></script>-->
+    <script src="js/soundplayer.js"></script>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/common.css" rel="stylesheet" />
+    <link type="text/css" href="css/web.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            var owl = $("#study_content_box").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                transitionStyle: "fade",
+                dots: true,
+
+            }).on('changed.owl.carousel', function (event) {
+                var page = event.page.index;
+                $(".pub-swich-items .item").removeClass("selected");
+                $(".pub-swich-items .item:eq(" + page + ")").addClass("selected");
+            });
+            $(".pub-swich-items .item").click(function () {
+                var index = $(this).index();
+                owl.trigger('to.owl.carousel', index);
+            });
+            var soundPlayer = new SoundPlayer({
+                loop: false,
+                autoplay: false,
+                dataList: manifest,
+                playHandler: function (data) {
+                    $("#sound-title").html("正在学习：" + data.singer + " - " + data.title);
+                    $("#sound-singer").html("主讲：" + data.singer);
+                },
+                playingHandler: function (currentTime) {
+                    $("#sound-time").html(currentTime);
+                }
+            });
+            $("#sound-play").click(function () {
+                // createjs.Sound.registerSounds(manifest, assetsPath);
+                //Sound.playHandler();
+                if (!soundPlayer.isPlay) {
+                    soundPlayer.play(function () {
+                        var str = soundPlayer.backTime() + " / " + soundPlayer.backTotTime();
+                        console.log(str);
+                        $("#sound-time").html(str);
+                        $("#curProgress").css("width", soundPlayer.calProcess() + "%");
+                    });
+                    $(this).children("i").removeClass("fa-play").addClass("fa-pause");
+                }
+                else {
+                    soundPlayer.pause();
+                    $(this).children("i").removeClass("fa-pause").addClass("fa-play");
+                }
+            });
+            $("#sound-next").click(function () {
+                soundPlayer.next();
+            });
+            $("#sound-prev").click(function () {
+                soundPlayer.prev();
+            });
+        })
+        //var soundid = 1;
+        var assetsPath = "/audio/";
+        var manifest = [{
+            id: '-1',
+            singer: "庄心妍",
+            title: "一万个舍不得111",
+            src: assetsPath + '111.mp3'
+        }, {
+            id: '0',
+            singer: "庄心妍",
+            title: "一万个舍不得",
+            src: assetsPath + 'ywgsbd.m4a'
+        }, {
+            id: '1',
+            singer: "岑宁儿",
+            title: "追光者",
+            src: assetsPath + 'zgz.mp3'
+        }, {
+            id: '3',
+            singer: "周杰伦",
+            title: "告白气球",
+            src: assetsPath + '107192078.m4a'
+        }, {
+            id: '4',
+            singer: "水木年华",
+            title: "一生有你",
+            src: assetsPath + '95484.m4a'
+        },]
+        //var src = "taoyan.mp3";
+
+        //var loader = new createjs.LoadQueue(false);
+        //loader.installPlugin(createjs.Sound);
+        //loader.addEventListener("fileload", function () {
+        //    console.log("end");
+        //    //createjs.Sound.registerSound(manifest, "sound");//鍗曟枃浠跺姞杞藉畬鎴�
+        //    btn.toggle(function () {
+
+        //        //Sound.playHandler(manifest);
+        //        music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
+        //    });
+        //});
+        //loader.addEventListener("complete", loadComplete);
+        //loader.addEventListener("fileload", fileComplete);
+        //loader.addEventListener("error", handleFileError);
+        //loader.addEventListener("fileprogress", handleFileProgress);
+        //loader.addEventListener("progress", handleProgress);
+        //loader.on("complete", function () {
+
+            //createjs.Sound.play("h5-demo-master/audio/107192078.m4a");
+            //music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
+            //createjs.Sound.registerSound(manifest, "sound");
+            //btn.click(function () {
+            //    //Sound.playHandler();
+            //    $(this).children("i").removeClass("fa-play").addClass("fa-pause");
+            //    //createjs.Sound.play("h5-demo-master/audio/107192078.m4a");
+            //    //var audio = document.getElementById('audio-player');
+            //    //audio.play();
+            //    //music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
+            //}, function () {
+            //    //Sound.playHandler();
+            //    $(this).children("i").removeClass("fa-pause").addClass("fa-play");
+
+            //});
+            //var btn = $("#sound-play");
+            //btn.click(function () {
+            //    // createjs.Sound.registerSounds(manifest, assetsPath);
+            //    //Sound.playHandler();
+            //    music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
+            //});
+            //$("#sound-next").click(function () {
+            //    Sound.next();
+            //});
+            //$("#sound-prev").click(function () {
+            //    Sound.prev();
+            //});
+
+        //}, this);
+
+
+        //loader.addEventListener("fileprogress", function (event) {
+        //    console.log("loaded", event.loaded, "progress", event.progress);//鍔犺浇杩涘害
+        //});
+        //loader.setMaxConnections(5);
+        //loader.maintainScriptOrder = true;
+        //loader.loadManifest(manifest);
+
+        //var Sound = {}
+        //Sound.playHandler = function (src) {
+        //    if (Sound.curSound) {
+        //        if (!Sound.curSound.paused) {
+        //            Sound.pauseHandler();
+        //            $("#sound-play").children("i").removeClass("fa-pause").addClass("fa-play");
+        //        }
+        //        else {
+        //            Sound.resumeHandler();
+        //            $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
+        //        }
+        //        return;
+        //    }
+        //    Sound.curSound = createjs.Sound.play(soundid); //createjs.Sound.play(src, createjs.Sound.INTERRUPT_LATE, 0, 0, -1);
+        //    $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
+        //}
+        //Sound.pauseHandler = function () {
+        //    Sound.curSound.paused = true;
+        //}
+        //Sound.resumeHandler = function () {
+        //    Sound.curSound.paused = false;
+        //}
+        //Sound.next = function () {
+        //    soundid++;
+        //    alert(soundid);
+        //    Sound.curSound = createjs.Sound.play(soundid);
+        //}
+        //Sound.prev = function () {
+        //    soundid--;
+        //    alert(soundid);
+        //    Sound.curSound = createjs.Sound.play(soundid);
+        //}
+
+        //function handleFileError(evt) {
+        //    console.log("error ", evt);
+        //    // An error occurred.
+        //}
+
+        //function handleFileProgress(evt) {
+        //    // Progress happened.
+        //    console.log("Event File Loading: " + (loader.progress.toFixed(2) * 100) + "%");
+        //}
+
+        //function handleProgress(evt) {
+        //    // Progress happened.
+        //    console.log("Event Loading: " + (loader.progress.toFixed(2) * 100) + "%");
+        //}
+        
+        
+    </script>
 </head>
 <body>
-	<div style="display: none;">
-		<img src="img/header.jpg">
-	</div>
-	<div id="wrapper" class="container">
-		<div class="bn"></div>
-		<div class="active-info">
-			<div class="vote-desc">
-				<div class="vote-desc-content" style="text-align: justify;">为深入学习贯彻落实党的十九大精神，全面展示湖北科技创新工作2017年度成果和业绩，为创新驱动营造良好的舆论氛围，12月1日，省科技厅正式启动2017年度湖北“十大科技事件”评选活动。<span class="vote-desc-more" data-more="为深入学习贯彻落实党的十九大精神，全面展示湖北科技创新工作2017年度成果和业绩，为创新驱动营造良好的舆论氛围，12月1日，省科技厅正式启动2017年度湖北“十大科技事件”评选活动。此次湖北“十大科技事件”评选，主要面向2017年度湖北省境内科技体制改革、科技创新活动、科技发展成就等方面具有重大影响的事件进行征集和评选。最终收到了省直部门、高校院所、科技行政系统和相关科技企业推荐的54件备选事件。按照“社会影响力大、政策引导性强；符合国家战略、体现科技先进性”的原则，经省科技厅厅长办公会审定了20项备选科技事件接受社会公众网络投票。网络投票结束后，将参考投票情况，经厅长办公会审定，最终确定2017年湖北省“十大科技事件”。" >[详细]</span></div>
-			</div>
-			<p style="font-size:0.28rem;font-weight:500;">[投票时间]</p>
-			<p>2018年1月8日08：00—2018年1月14日17：30</p>
-			<p style="font-size:0.28rem;font-weight:500;margin-top:0.1rem;">[投票规则]</p>
-			<p>1.一个微信号一天投一次，一次可以为10个事件投票。</p>
-			<p>2.系统具有投票日志分析系统和报警系统，如果发现刷票行为，将视为无效投票。</p>
-		</div>
-		<div id="user_list" class="pman-panel"></div>
-		<div class="footer">
-			<div class="qrcode">
-				<img src="img/code.jpg">
-			</div>
-			<div class="weui-footer">
-	            <p class="weui-footer__text" style="color:#333;">Copyright © 2018 cnhubei.com</p>
-	        </div>
-			<!-- <div class="btn-panel">
-				<span class="btn-vote"></span>
-			</div> -->
-		</div>
-	</div>
-	<div id="captcha" class="p-captcha"></div>
-	<div id="loadingToast" class="weui_loading_toast" style="display:none;">
-		<div class="weui_mask_transparent"></div>
-		<div class="weui_toast">
-			<div class="weui_loading">
-				<div class="weui_loading_leaf weui_loading_leaf_0"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_1"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_2"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_3"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_4"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_5"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_6"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_7"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_8"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_9"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_10"></div>
-				<div class="weui_loading_leaf weui_loading_leaf_11"></div>
-			</div>
-			<p class="weui_toast_content">数据加载中</p>
-		</div>
-	</div>
+    <!--<audio id="audio-player" style="width: 100%" src="h5-demo-master/audio/107192078.m4a" controls></audio>-->
+    <div class="header"><img src="images/i001.jpg" /></div>
+    <div class="study-area" id="jquery_jplayer_2">
+        <h5 id="sound-title">正在学习：领导干部要做践行“三严三实”的模范</h5>
+        <div class="study-progress">
+            <span class="i leftI"></span><span class="line"><span id="curProgress" class="curProgress" style="width:0%"><i class="bar"></i></span></span><span class="i"></span>
 
-	<script type="text/juicer" id="user_list_tpl">
-		{@each list as obj, index}
-			<div class="pman-detail">
-				<div class="avatar" data-url="${obj.link}">
-					<img src="${obj.pic}" >
-				</div>
-				<div class="pman-content">
-					<div class="pman-info">
-						<span>${obj.title}</span>
-					</div>
-					<div class="pman-desc">
-						<div class="pman-desc-content">
-							${obj.info|formatInfo}
-						</div>
-						<a href="javascript:void(0);" class="more" data-more="${obj.info}" data-fold="${obj.info|formatInfo}">[更多]</a>
-					</div>
-				</div>
-				<div class="btn-wrapper">
-					<span data-id="${obj.id}" class="btn-vote"><i class="ico-vote"></i>投票</span>
-					<span class="txt-count" data-count="${obj.count}">${obj.count}&nbsp;票</span>
-				</div>
-			</div>
-		{@/each}
-	</script>
- 	<script type="text/javascript"	src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<script>
-		var signature = '';
-		var signatureLink = "http://xmdx.dev.cnhubei.com/gsw/signature/jcw";
-		var currLink = location.href.split('#')[0];
-		var appId = "wxf947d7d09ef1f584";
-		var timestamp = "1414587499";
-		var nonceStr = "xkXGEs8VMCP";
-		var shareLink = 'http://act.cnhubei.com/sdkj/index';
-		var title = '湖北十大科技事件评选';
-		var imgUrl = "http://act.cnhubei.com/static/sdkj/img/logo.jpg";
-		var desc = "12月1日，省科技厅正式启动2017年度湖北“十大科技事件”评选活动。";
-		$.ajax({
-			url : signatureLink,
-			async : false,
-			data : {url : currLink},
-			success : function(data){
-				signature = data;
-			}
-		});
-		wx.config({
-			// debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-			appId: appId, // 必填，公众号的唯一标识
-			timestamp: timestamp, // 必填，生成签名的时间戳
-			nonceStr: nonceStr, // 必填，生成签名的随机串
-			signature: signature,// 必填，签名，见附录1
-			jsApiList: ['hideOptionMenu','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ'] 
-		});
-		wx.hideOptionMenu();
-	 	wx.ready(function(){
-			wx.showOptionMenu();
-			wx.onMenuShareTimeline({
-				title: title, // 
-				link: shareLink, // 分享链接
-				imgUrl: imgUrl, // 分享图标
-				success: function () { 
-				},
-				cancel: function () { 
-				}
-			});
+        </div>
+        <div class="study-btns-area container" id="jp_container_2">
+            <div class="row">
+                <div class="col-1"><a class="btn-playlist"><img src="images/icon001.jpg" /><p>播放列表</p></a></div>
+                <div class="col-2"><a id="sound-prev" class="btn-prev" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a></div>
+                <div class="col-3"><a id="sound-play" class="btn-play" href="javascript:void(0)"><i class="fa fa-play fa-fw fa-align-center"></i></a></div>
+                <div class="col-4"><a id="sound-next" class="btn-next" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a></div>
+                <div class="col-5"><a class="btn-clock"><img src="images/icon002.jpg" /><p>定时关闭</p></a></div>
 
-			wx.onMenuShareAppMessage({
-				title: title, // 分享标题
-				desc: desc, // 分享描述
-				link: shareLink, // 分享链接
-				imgUrl: imgUrl, // 分享图标
-				type: '', // 分享类型,music、video或link，不填默认为link
-				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-				success: function () { 
-				},
-				cancel: function () { 
-				}
-			});
-
-			wx.onMenuShareQQ({
-				title: title, // 分享标题
-				desc: desc, // 分享描述
-				link: shareLink, // 分享链接
-				imgUrl: imgUrl, // 分享图标
-				type: '', // 分享类型,music、video或link，不填默认为link
-				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-				success: function () { 
-				},
-				cancel: function () { 
-				}
-			});
-		});
-	</script>
-
-	<script src="https://static.geetest.com/static/tools/gt.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
- 	<script type="text/javascript">
-		$(document).ready(function(){
-			moka.index.init();
-		});
-	</script>
+            </div>
+        </div>
+        <div class="study-info"><span class="s-box s-icon-zj" id="sound-singer">主讲：胡黎</span><span id="sound-time" class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+    </div>
+    <div class="borderLine"></div>
+    <div class="pub-box">
+        <div class="title-box">
+            <div class="title left"><a href="studytasklist.html">学习任务</a></div>
+            <div class="pub-swich-items right">
+                <div class="item selected">1</div>
+                <div class="item">2</div>
+                <div class="item">3</div>
+                <div class="item">4</div>
+            </div>
+        </div>
+        <div id="study_content_box" class="content-box owl-carousel owl-theme" data-ride="carousel">
+            <div class="item">
+                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="c-box">
+                    <h3>1湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="c-box">
+                    <h3>2湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="c-box">
+                    <h3>3湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="c-box">
+                    <h3>4湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="borderLine"></div>
+    <div class="pub-box">
+        <div class="title-box">
+            <div class="title left"><a href="studylist.html">推荐课程</a></div>
+            <div class="pub-swich-items right"><a href="studylist.html">更多&nbsp;&gt;</a></div>
+        </div>
+        <div class="content-box">
+            <div class="item">
+                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="c-box">
+                    <h3>湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="borderLine"></div>
+    <div class="icons-area">
+        <div class="item">
+            <button class="i1"><img src="images/ico_1.png" /></button>
+            <p>调查</p>
+        </div>
+        <div class="item">
+            <button class="i2"><img src="images/ico_2.png" /></button>
+            <p>考试</p>
+        </div>
+        <div class="item">
+            <button class="i3"><img src="images/ico_3.png" /></button>
+            <p>直播</p>
+        </div>
+        <div class="item">
+            <button class="i4"><img src="images/ico_4.png" /></button>
+            <p>专家</p>
+        </div>
+    </div>
+    <div class="height50"></div>
+    <footer class="index-footer container">
+        <div class="row">
+            <div class="item col-xs-4"><img src="images/icon011.jpg" />学习历史</div>
+            <div class="item col-xs-4"><a href="experiencelist.html"><img src="images/icon012.jpg" />心得体会</a></div>
+            <div class="item col-xs-4"><img src="images/icon013.jpg" />个人中心</div>
+        </div>
+    </footer>
 </body>
 </html>

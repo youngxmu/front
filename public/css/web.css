@@ -1,0 +1,105 @@
+.header img { width: 100%; }
+.study-area { }
+.study-area h5 { padding: 2rem 2rem 1rem 2rem; font-size: 1.6rem; }
+.study-area .sound-desc { padding: 0 2rem 1rem 2rem; color: #9a9898; }
+.study-area .study-progress { padding: 1rem 2rem; display: -webkit-box; }
+.study-area .study-progress span.i { display: block;position:relative; width: 1rem; height: 1rem; background-color: #c3c3c3; border-radius: .5rem; box-shadow: 0 0 .2rem #888888; }
+.study-area .study-progress span.i .progress-text { position:absolute; top:1.5rem; left:-2.0rem; width:5rem; font-size:1.2rem; text-align:center;}
+.study-area .study-progress span.leftI { background: #ff7c6d }
+.study-area .study-progress span.line { display: block; background-color: #c3c3c3; height: .2rem; -webkit-box-flex: 1; margin-top: .4rem; }
+.study-area .study-progress span.line .curProgress { display: block; height: 100%; background: #ff7c6d; position: relative; box-shadow: 0 0 .2rem #888888; }
+.study-area .study-progress span.line .curProgress i.bar { display: block; background: #ff7c6d; height: 2rem; width: 1rem; border-radius: .3rem; position: absolute; right: 0; top: -.9rem; box-shadow: 0 0 .2rem #888888; }
+
+.study-area .study-btns-area { padding-bottom: 2rem; }
+.study-area .study-btns-area button { display: block }
+.study-area .study-btns-area button img { width: 100%; }
+.study-area .study-btns-area .col-1 { width: 23%; height: 7rem; float: left; text-align: center; }
+.study-area .study-btns-area .col-2 { width: 12%; height: 7rem; float: left; text-align: center; }
+.study-area .study-btns-area .col-3 { width: 30%; height: 7rem; float: left; text-align: center; }
+.study-area .study-btns-area .col-4 { width: 12%; height: 7rem; float: left; text-align: center; }
+.study-area .study-btns-area .col-5 { width: 23%; height: 7rem; float: left; text-align: center; }
+.study-area .study-btns-area .btn-playlist { height: 7rem; display: block; padding-top: 2.4rem; }
+.study-area .study-btns-area .btn-playlist img { width: 2.6rem; height: 2.4rem; }
+.study-area .study-btns-area .btn-playlist p { margin-top: .5rem; font-size: 1.2rem; }
+.study-area .study-btns-area .btn-prev { height: 7rem; line-height: 7rem; font-size: 2rem; /*color: #fcd2c3;*/ color: #f96645; display: block; }
+.study-area .study-btns-area .btn-play { width: 7rem; height: 7rem; border-radius: 3.5rem; background: #f7725f; vertical-align: middle; margin: 0 auto; font-size: 2rem; box-shadow: 0 0 .5rem #888888; color: #fff; line-height: 7rem; display: block; text-align: center }
+.study-area .study-btns-area .btn-next { height: 7rem; line-height: 7rem; font-size: 2rem; color: #f96645; display: block; }
+.study-area .study-btns-area .btn-clock { height: 7rem; display: block; padding-top: 2.4rem; }
+.study-area .study-btns-area .btn-clock img { width: 2.6rem; height: 2.4rem; }
+.study-area .study-btns-area .btn-clock p { margin-top: .5rem; font-size: 1.2rem; }
+.study-area .study-info { padding: 0 1rem 2rem 1rem; text-align: center; }
+
+span.s-box { padding-left: 1.5rem; height: 2.2rem; line-height: 2.2rem; display: inline-block; color: #a4a4a4; font-size: 1.2rem; }
+span.s-icon-zj { background: url(../images/icon005.jpg) 0 .5rem no-repeat; background-size: 1.1rem 1.1rem; }
+span.s-icon-sj { background: url(../images/icon006.jpg) 0 .5rem no-repeat; background-size: 1.1rem 1.1rem; }
+span.s-icon-rs { background: url(../images/icon014.jpg) 0 .5rem no-repeat; background-size: 1.1rem 1.1rem; }
+span.s-icon-clock { background: url(../images/icon015.jpg) 0 .5rem no-repeat; background-size: 1.1rem 1.1rem; }
+span.s-icon-view { background: url(../images/icon016.jpg) 0 .5rem no-repeat; background-size: 1.1rem 1.1rem; }
+
+.pub-box { }
+.pub-box .title-box { padding: 1rem 2rem; }
+.pub-box .title-box:before, .pub-box .content-box:before, .icons-area:before, .pub-swich-items:before, .pub-ul-exp li .user-study-info:before, .study-task-list li:before, footer.study-task-footer:before { display: table; content: " "; }
+.pub-box .title-box:after, .pub-box .content-box:after, .icons-area:after, .pub-swich-items:after, .pub-ul-exp li .user-study-info:after, .study-task-list li:after, footer.study-task-footer:after { display: table; content: " "; clear: both; }
+.pub-box .title-box .title { font-size: 1.6rem; float: left; }
+.pub-box .content-box { padding: .5rem 2rem 2rem 2rem; }
+.pub-box .content-box .item { display: -webkit-box; }
+.pub-box .content-box .item .pic-thumb { width: 8rem; height: 8rem; }
+.pub-box .content-box .item .pic-thumb img { width: 100%; }
+.pub-box .content-box .item .c-box { -webkit-box-flex: 1; margin-left: 1rem; }
+.pub-box .content-box .item .c-box h3 { font-size: 1.6rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-bottom: .5rem; }
+.pub-box .content-box .item .c-box .desc { font-size: 1.2rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-top: .8rem; padding-bottom: .5rem; color: #a4a4a4; }
+.pub-box .content-box .item .c-box .otherInfo { margin-top: .5rem; }
+.pub-swich-items { }
+.pub-swich-items .item { float: left; width: 2rem; height: 2rem; background: #eeeeee; border-radius: .3rem; display: inline; margin-left: .5rem; text-align: center; line-height: 2rem; }
+.pub-swich-items .item.selected { background: #ff7c6d; color: #fff; }
+.icons-area { padding: 2rem; }
+.icons-area .item button.i1 { background: #dbdd59; }
+.icons-area .item button.i2 { background: #fdad66; }
+.icons-area .item button.i3 { background: #ff7c6d; }
+.icons-area .item button.i4 { background: #f4cc6c; }
+.icons-area .item { width: 25%; float: left; display: inline; text-align: center; }
+.icons-area .item button { border: none; width: 5rem; height: 5rem; border-radius: 2.5rem; display: block; margin: 0 auto; text-align: center; }
+.icons-area .item p { margin-top: .5rem; font-size: 1.4rem; }
+.icons-area .item button img { width: 2.5rem; height: 2.5rem; }
+/*分隔线*/
+.borderLine { height: 1.1rem; background-color: #f0f4f7; border-top: .1rem #c0c4c7 solid; border-bottom: .1rem #c0c4c7 solid; }
+/*学习列表分隔线*/
+.pub-box-border { border-bottom: .1rem #cdcccc solid; }
+.pub-box-border-color1 { border-bottom-color: #e6e6e6 !important }
+/*底部*/
+footer.index-footer, footer.study-task-footer { position: fixed; bottom: 0; left: 0; right: 0; height: 5rem; border-top: .1rem #d6d6d6 solid; background: #fff; z-index: 9999; }
+footer.index-footer .item { text-align: center; vertical-align: middle; line-height: 5rem; }
+footer.index-footer .item img { width: 2.5rem; height: 2rem; vertical-align: middle; margin-right: .3rem; }
+footer.study-task-footer .col { width: 50%;  float: left; }
+footer.study-task-footer .col button { display: block; width: 12.1rem; height: 2.1rem; text-align: center; color: #fff; border-radius: .3rem; margin: 0 auto; margin-top:1.4rem; }
+footer.study-task-footer .col button.b1 { background-color: #f15843; }
+footer.study-task-footer .col button.b2 { background-color: #3ea592; }
+
+/*心得体会*/
+.pub-ul-exp { list-style-type: none; }
+.pub-ul-exp li { padding: 2rem; }
+.pub-ul-exp li .user-info-area { display: -webkit-box; }
+.pub-ul-exp li .user-info-area .user-icon { width: 6.5rem; height: 6.5rem; border-radius: 3.25rem; overflow: hidden; }
+.pub-ul-exp li .user-info-area .user-icon img { width: 100%; }
+.pub-ul-exp li .user-info-area .user-info { -webkit-box-flex: 1; margin-left: 1rem; padding-left: 1rem; }
+.pub-ul-exp li .user-info-area .user-info h2 { font-size: 1.6rem; }
+.pub-ul-exp li .user-info-area .user-info p { font-size: 1.4rem; color: #7a7979; padding-top: .9rem; }
+.pub-ul-exp li h3 { font-size: 1.8rem; margin-top: 2.0rem; margin-bottom: 1.4rem; }
+.pub-ul-exp li .user-study-info { margin-top: 1.4rem; }
+/*会员header*/
+.menber-area { display: -webkit-box; height: 11.9rem; padding-top: 3rem; padding-left: 3rem; padding-right: 1rem; background: -webkit-linear-gradient(left, #fd3a3b, #ce0463); /* Safari 5.1 - 6.0 */ background: -o-linear-gradient(right, #fd3a3b, #ce0463); /* Opera 11.1 - 12.0 */ background: -moz-linear-gradient(right, #fd3a3b, #ce0463); /* Firefox 3.6 - 15 */ background: linear-gradient(to right, #fd3a3b, #ce0463); /* 标准的语法 */ }
+.menber-area .menber-icon { width: 6.5rem; height: 6.5rem; border-radius: 3.25rem; overflow: hidden; }
+.menber-area .menber-icon img { width: 100%; }
+.menber-area .menber-info { -webkit-box-flex: 1; margin-left: 1rem; padding-left: 1rem; color: #fff; }
+.menber-area .menber-info h2 { margin-top: .5rem; font-size: 1.8rem; }
+.menber-area .menber-info p { margin-top: 1rem; font-size: 1.4rem; }
+.partyMember-area { height: 3.4rem; line-height: 3.4rem; }
+.partyMember-area i { margin-left: 1.2rem; margin-right: 1.5rem; }
+.partyMember-area i img { width: 2.1rem; height: 2.3rem; }
+/*学习任务列表*/
+.study-task-area { padding: 2rem; }
+.study-task-area h1 { font-size: 1.6rem; color: #1c1b20 }
+.study-task-list { list-style-type: none; padding-top: .8rem; padding-bottom: .8rem; }
+.study-task-list li { background: url(../images/icon005.jpg) 0 1.2rem no-repeat; background-size: 1.1rem 1.1rem; padding-left: 2rem; padding-top: .8rem; padding-bottom: .8rem; }
+.study-task-list li a { color: #888787; }
+.study-task-list li i { float: right; display: inline-block; width: 1.6rem; height: 1.6rem; margin-top: 0.2rem; background: #f46953; border-radius: .8rem; font-size: 0.6rem; line-height: 1.6rem; color: #fff; box-shadow: 0 0 .2rem #888888; }

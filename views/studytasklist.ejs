@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <title>学习任务</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/soundplayer.js"></script>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/common.css" rel="stylesheet" />
+    <link type="text/css" href="css/web.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            var assetsPath = "/audio/";
+            var manifest = [{
+                id: '-1',
+                singer: "庄心妍",
+                title: "一万个舍不得111",
+                desc: "庄心妍 - 一万个舍不得111",
+                src: assetsPath + '111.mp3'
+            }, {
+                id: '0',
+                singer: "庄心妍",
+                title: "一万个舍不得",
+                desc: "庄心妍 - 一万个舍不得",
+                src: assetsPath + 'ywgsbd.m4a'
+            }, {
+                id: '1',
+                singer: "岑宁儿",
+                title: "追光者",
+                desc: "岑宁儿 - 追光者",
+                src: assetsPath + 'zgz.mp3'
+            }, {
+                id: '3',
+                singer: "周杰伦",
+                title: "告白气球",
+                desc: "周杰伦 - 告白气球",
+                src: assetsPath + '107192078.m4a'
+            }, {
+                id: '4',
+                singer: "水木年华",
+                title: "一生有你",
+                desc: "水木年华 - 一生有你",
+                src: assetsPath + '95484.m4a'
+            },]
+            var soundPlayer = new SoundPlayer({
+                loop: false,
+                autoplay: false,
+                dataList: manifest,
+                playHandler: function (data) {
+                    $("#sound-title").html("正在学习：" + data.singer + " - " + data.title);
+                    $("#sound-desc").html("简介：" + data.desc);
+                    //$("#sound-singer").html("主讲：" + data.singer);
+                },
+                playingHandler: function (currentTime) {
+                    //$("#sound-time").html(currentTime);
+                }
+            });
+            $("#sound-play").click(function () {
+                // createjs.Sound.registerSounds(manifest, assetsPath);
+                //Sound.playHandler();
+                if (!soundPlayer.isPlay) {
+                    soundPlayer.play(function () {
+                        var str = soundPlayer.backTime() + " / " + soundPlayer.backTotTime();
+                        console.log(str);
+                        $("#sound-current-progress").html(soundPlayer.backTime());
+                        $("#sound-total-progress").html(soundPlayer.backTotTime());
+                        $("#curProgress").css("width", soundPlayer.calProcess() + "%");
+                    });
+                    $(this).children("i").removeClass("fa-play").addClass("fa-pause");
+                }
+                else {
+                    soundPlayer.pause();
+                    $(this).children("i").removeClass("fa-pause").addClass("fa-play");
+                }
+            });
+            $("#sound-next").click(function () {
+                soundPlayer.next();
+            });
+            $("#sound-prev").click(function () {
+                soundPlayer.prev();
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="menber-area">
+        <div class="menber-icon"><img src="images/usericon.JPG" /></div>
+        <div class="menber-info">
+            <h2>会员：胡黎</h2>
+            <p>学习时间：1小时5分钟&nbsp;&nbsp;学习积分：999</p>
+        </div>
+    </div>
+    <div class="partyMember-area pub-box-border"><i><img src="images/i004.jpg" /></i>党员信息：我在XXX党组织排名33名</div>
+    <div class="study-area">
+        <h5 id="sound-title">正在学习：领导干部要做践行“三严三实”的模范</h5>
+        <div class="sound-desc" id="sound-desc">简介：领导干部要做践行“三严三实”的模范</div>
+        <div class="study-progress">
+            <span class="i leftI"><span class="progress-text" id="sound-current-progress">00:00</span></span><span class="line"><span id="curProgress" class="curProgress" style="width:0%"><i class="bar"></i></span></span><span class="i"><span class="progress-text" id="sound-total-progress">00:00</span></span>
+        </div>
+        <div class="study-btns-area container" id="jp_container_2">
+            <div class="row">
+                <div class="col-1"><a class="btn-playlist"><img src="images/icon001.jpg" /><p>播放列表</p></a></div>
+                <div class="col-2"><a id="sound-prev" class="btn-prev" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a></div>
+                <div class="col-3"><a id="sound-play" class="btn-play" href="javascript:void(0)"><i class="fa fa-play fa-fw fa-align-center"></i></a></div>
+                <div class="col-4"><a id="sound-next" class="btn-next" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a></div>
+                <div class="col-5"><a class="btn-clock"><img src="images/icon002.jpg" /><p>定时关闭</p></a></div>
+
+            </div>
+        </div>
+        <!--<div class="study-info"><span class="s-box s-icon-zj" id="sound-singer">主讲：胡黎</span><span id="sound-time" class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>-->
+    </div>
+    <div class="borderLine"></div>
+    <div class="study-task-area">
+        <h1>课程列表</h1>
+        <ul class="study-task-list">
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class="fa fa-play fa-fw"></i></li>
+        </ul>
+    </div>
+    <div class="height50"></div>
+    <footer class="study-task-footer">
+        <div class="col"><button class="b1">自我测试</button></div>
+        <div class="col"><button class="b2">在线考试</button></div>
+    </footer>
+</body>
+</html>

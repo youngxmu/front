@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <title>心得体会</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/minirefresh.min.js"></script>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/minirefresh.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/common.css" rel="stylesheet" />
+    <link type="text/css" href="css/web.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            //var appendTestData = Common.appendTestData,
+            //    bindEvent = Common.bindEvent,
+            // 记录一个最新
+            var maxDataSize = 30,
+                listDom = document.querySelector('#listdata'),
+                requestDelayTime = 600,
+                isCssTranslate = true;
+
+            var miniRefresh = new MiniRefresh({
+                container: '#minirefresh',
+                down: {
+                    // 本主题的特色，是否开启wrap的css translate
+                    // 虽然继承自default的主题也有这个变量，但是目前只建议在defaul和applet中使用
+                    // default默认是关闭的 applet默认是开启的
+                    isWrapCssTranslate: isCssTranslate,
+                    callback: function () {
+                        setTimeout(function () {
+                            // 每次下拉刷新后，上拉的状态会被自动重置
+                            //appendTestData(listDom, 10, true);
+                            miniRefresh.endDownLoading(true);
+                        }, requestDelayTime);
+                    }
+                },
+                up: {
+                    isAuto: true,
+                    callback: function () {
+                        setTimeout(function () {
+                            // appendTestData(listDom, 10);
+                            miniRefresh.endUpLoading(listDom.children.length >= maxDataSize ? true : false);
+                        }, requestDelayTime);
+                    }
+                }
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id="minirefresh" class="minirefresh-wrap">
+
+        <div class="minirefresh-scroll">
+            <ul class="pub-ul-exp" id="listdata">
+                <li class="pub-box-border">
+                    <div class="user-info-area">
+                        <div class="user-icon"><img src="images/usericon.JPG" /></div>
+                        <div class="user-info">
+                            <h2>会员：胡黎</h2>
+                            <p>所在支部：荆楚网第一支部</p>
+                            <p>课程：19大报告</p>
+                        </div>
+                    </div>
+                    <h3>湖北最冷的时候到了! 武汉要下8天雪</h3>
+                    <div class="user-study-info"><span class="s-box s-icon-clock left">时长：1小时30分钟</span><span class="s-box s-icon-view right">阅读量：2130</span></div>
+                </li>
+                <li class="pub-box-border">
+                    <div class="user-info-area">
+                        <div class="user-icon"><img src="images/usericon.JPG" /></div>
+                        <div class="user-info">
+                            <h2>会员：胡黎</h2>
+                            <p>所在支部：荆楚网第一支部</p>
+                            <p>课程：19大报告</p>
+                        </div>
+                    </div>
+                    <h3>湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
+                    <div class="user-study-info"><span class="s-box s-icon-clock left">时长：1小时30分钟</span><span class="s-box s-icon-view right">阅读量：2130</span></div>
+                </li>
+                <li class="pub-box-border">
+                    <div class="user-info-area">
+                        <div class="user-icon"><img src="images/usericon.JPG" /></div>
+                        <div class="user-info">
+                            <h2>会员：胡黎</h2>
+                            <p>所在支部：荆楚网第一支部</p>
+                            <p>课程：19大报告</p>
+                        </div>
+                    </div>
+                    <h3>湖北最冷的时候到了! 武汉要下8天雪</h3>
+                    <div class="user-study-info"><span class="s-box s-icon-clock left">时长：1小时30分钟</span><span class="s-box s-icon-view right">阅读量：2130</span></div>
+                </li>
+                <li class="pub-box-border">
+                    <div class="user-info-area">
+                        <div class="user-icon"><img src="images/usericon.JPG" /></div>
+                        <div class="user-info">
+                            <h2>会员：胡黎</h2>
+                            <p>所在支部：荆楚网第一支部</p>
+                            <p>课程：19大报告</p>
+                        </div>
+                    </div>
+                    <h3>湖北最冷的时候到了! 武汉要下8天雪</h3>
+                    <div class="user-study-info"><span class="s-box s-icon-clock left">时长：1小时30分钟</span><span class="s-box s-icon-view right">阅读量：2130</span></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
