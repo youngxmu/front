@@ -1,0 +1,111 @@
+*{margin:0;padding:0;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing:border-box;
+    -webkit-user-select: none;-webkit-tap-highlight-color: rgba(200,200,200,0);}
+html{font-size : 48px ;height: 100%;width: 100%;font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
+/** * Galaxy S5 landscape & portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3){html{font-size: 56px ;}}
+/** * Galaxy S5 landscape & portrait */
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 4){html{font-size: 56px ;}}
+@media only screen and (min-width: 375px){html{font-size: 58px ;}}
+@media only screen and (min-width: 414px){html{font-size: 64px ;}}
+@media only screen and (min-width: 481px){html{font-size: 70px ;}}
+@media only screen and (min-width: 569px){html{font-size: 65px ;}}
+@media only screen and (min-width: 600px){html{font-size: 93px ;}}
+@media only screen and (min-width: 800px){html{font-size: 93px ;}}
+@media screen and (max-device-width: 480px){body{-webkit-text-size-adjust: none;}}
+a{text-decoration: none;-webkit-tap-highlight-color:rgba(221, 221, 221,0)}
+body{margin:0; font-size:.24rem; width:100%; height: 100%; background:#f6f6f6;}
+dl,dt,dd{margin:0; padding:0}
+ul{margin:0;padding:0}
+li{list-style-type:none;}
+input{outline:none} 
+.dlg{position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 99;}
+.dlg.on{display: block;}
+.dlg.off{display: none;}
+.dlg .mask{position: fixed;width: 100%;height: 100%;left: 0;top: 0;opacity: 0.7;background-color: #000000;
+    z-index: 100;
+}
+
+
+/** code dlg*/
+.dlg.code .dlg-content{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 4.8rem;
+    height: 5.2rem;
+    left: 50%;top: 50%;
+    margin: -2.6rem 0 0 -2.4rem;
+    font-size: 0.26rem;
+    z-index: 101;
+    background-color: transparent;
+}
+
+
+.dlg.code .dlg-content .close{
+    background-size: 100%;
+    position: absolute;
+    top: 0.3rem;right: 0.06rem;
+    width: 0.42rem;height: 0.42rem;
+
+}
+.dlg.code .dlg-content .content{
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 1.1rem;
+    padding: 0 0.4rem;
+    font-size: 0.3rem;
+
+}
+
+
+.dlg.code .dlg-content .content .jcw-code{
+    margin-top: 0.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-block;
+}
+
+
+.dlg.share .dlg-content {
+    background-image: url("http://www.cnhubei.com/download/2016/police/img/p3_20.png");
+    background-position: top  right;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 80%;height: 100%;
+    margin: 0 10%;
+    z-index: 9999;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.weui_btn {
+    padding-left: 0.28rem;
+    padding-right: 0.28rem;
+    box-sizing: border-box;
+    font-size: 0.36rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    line-height: 2.33333333;
+    border-radius: 0.1rem;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow: hidden;
+}
+
+.weui_btn:after {
+    content: " ";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(0,0,0,.2);
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 0.2rem;
+}

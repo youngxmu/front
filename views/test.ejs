@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include common/meta.ejs %>
+	<title>首届“湖北改革奖”评选</title>
+	<script>
+		(function (doc, win) { 
+			var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function () {
+			var clientWidth = docEl.clientWidth;
+			if (!clientWidth) return;
+			docEl.style.fontSize = parseInt(100 * (clientWidth / 320) * 320 / 640,10) + 'px';
+			};
+			if (!doc.addEventListener) return; 
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+	<style type="text/css">
+		.p-captcha svg{
+			width: 80vw !important;
+			height: 77vw !important;
+		}
+	</style>
+</head>
+<body>
+	<div style="display: none;">
+		<img src="img/header.png">
+	</div>
+	<div id="wrapper" class="container">
+		<div class="bn"></div>
+		<div class="active-info"></div>
+		<div id="user_list" class="pman-panel"></div>
+		<div class="footer">
+			<div class="btn-panel">
+				<span class="btn-vote"></span>
+			</div>
+		</div>
+	</div>
+	<div id="captcha" class="p-captcha"></div>
+	<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+		<div class="weui_mask_transparent"></div>
+		<div class="weui_toast">
+			<div class="weui_loading">
+				<div class="weui_loading_leaf weui_loading_leaf_0"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_1"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_2"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_3"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_4"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_5"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_6"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_7"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_8"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_9"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_10"></div>
+				<div class="weui_loading_leaf weui_loading_leaf_11"></div>
+			</div>
+			<p class="weui_toast_content">数据加载中</p>
+		</div>
+	</div>
+
+	<script type="text/juicer" id="user_list_tpl">
+		{@each list as obj, index}
+			<div class="pman-detail">
+				<span class="code">${obj.code}</span>
+				<div data-key="${obj.id}" class="avatar">
+					<img src="${obj.pic}" >
+				</div>
+				<div data-key="${obj.id}" class="pman-content">
+					<div class="pman-info">
+						<span>姓名：${obj.name}</span>
+						<span>得票：${obj.count}</span>
+					</div>
+					<div class="pman-desc">简介：${obj.info}</div>
+				</div>
+				<div class="btn-wrapper">
+					<input type="checkbox" data-key="${obj.key}" class="btn-check">
+				</div>
+			</div>
+		{@/each}
+	</script>
+ 	<script type="text/javascript"	src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		var signature = '';
+		var signatureLink = "http://xmdx.dev.cnhubei.com/gsw/signature/jcw";
+		var currLink = location.href.split('#')[0];
+		var appId = "wxf947d7d09ef1f584";
+		var timestamp = "1414587499";
+		var nonceStr = "xkXGEs8VMCP";
+		var shareLink = 'http://act.cnhubei.com/reform/index';
+		var title = '首届“湖北改革奖”评选';
+		var imgUrl = "http://xmdx.dev.cnhubei.com/static/reform/img/header.jpg";
+		var desc = "";
+		$.ajax({
+			url : signatureLink,
+			async : false,
+			data : {url : currLink},
+			success : function(data){
+				signature = data;
+			}
+		});
+		wx.config({
+			// debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			appId: appId, // 必填，公众号的唯一标识
+			timestamp: timestamp, // 必填，生成签名的时间戳
+			nonceStr: nonceStr, // 必填，生成签名的随机串
+			signature: signature,// 必填，签名，见附录1
+			jsApiList: ['hideOptionMenu','onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ'] 
+		});
+		wx.hideOptionMenu();
+	 	wx.ready(function(){
+			wx.showOptionMenu();
+			wx.onMenuShareTimeline({
+				title: title, // 
+				link: shareLink, // 分享链接
+				imgUrl: imgUrl, // 分享图标
+				success: function () { 
+				},
+				cancel: function () { 
+				}
+			});
+
+			wx.onMenuShareAppMessage({
+				title: title, // 分享标题
+				desc: desc, // 分享描述
+				link: shareLink, // 分享链接
+				imgUrl: imgUrl, // 分享图标
+				type: '', // 分享类型,music、video或link，不填默认为link
+				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				success: function () { 
+				},
+				cancel: function () { 
+				}
+			});
+
+			wx.onMenuShareQQ({
+				title: title, // 分享标题
+				desc: desc, // 分享描述
+				link: shareLink, // 分享链接
+				imgUrl: imgUrl, // 分享图标
+				type: '', // 分享类型,music、video或link，不填默认为link
+				dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				success: function () { 
+				},
+				cancel: function () { 
+				}
+			});
+		});
+	</script>
+	<script src="http://static.geetest.com/static/tools/gt.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
+ 	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.index.init();
+		});
+	</script>
+</body>
+</html>
