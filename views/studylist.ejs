@@ -1,22 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="format-detection" content="email=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <%- include common/meta.ejs %>
     <title>课程列表</title>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/minirefresh.min.js"></script>
-    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="css/owl.carousel.min.css" rel="stylesheet" />
-    <link type="text/css" href="css/minirefresh.min.css" rel="stylesheet" />
-    <link type="text/css" href="css/common.css" rel="stylesheet" />
-    <link type="text/css" href="css/web.css" rel="stylesheet" />
     <script>
         $(function () {
             //var appendTestData = Common.appendTestData,
@@ -58,82 +44,87 @@
     </script>
 </head>
 <body>
-    <div id="minirefresh" class="minirefresh-wrap">
+    <%- include common/header.ejs %>
+    <div class="sl-box-wrapper">
+        <div class="sl-box">
+            <div id="minirefresh" class="minirefresh-wrap">
 
-        <div class="minirefresh-scroll">
-            <div id="listdata">
+                <div class="minirefresh-scroll">
+                    <div id="listdata">
 
-                <div class="pub-box pub-box-border">
-                    <div class="title-box">
-                        <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="item">
-                            <div class="pic-thumb"><img src="images/i003.jpg" /></div>
-                            <div class="c-box">
-                                <h3>主讲：胡黎</h3>
-                                <div class="desc">中国人民大学国际关系学院教授</div>
-                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                        <div class="pub-box pub-box-border">
+                            <div class="title-box">
+                                <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="item">
+                                    <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                                    <div class="c-box">
+                                        <h3>主讲：胡黎</h3>
+                                        <div class="desc">中国人民大学国际关系学院教授</div>
+                                        <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="pub-box pub-box-border">
-                    <div class="title-box">
-                        <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="item">
-                            <div class="pic-thumb"><img src="images/i003.jpg" /></div>
-                            <div class="c-box">
-                                <h3>主讲：胡黎</h3>
-                                <div class="desc">中国人民大学国际关系学院教授</div>
-                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                        <div class="pub-box pub-box-border">
+                            <div class="title-box">
+                                <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="item">
+                                    <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                                    <div class="c-box">
+                                        <h3>主讲：胡黎</h3>
+                                        <div class="desc">中国人民大学国际关系学院教授</div>
+                                        <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="pub-box pub-box-border">
-                    <div class="title-box">
-                        <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="item">
-                            <div class="pic-thumb"><img src="images/i003.jpg" /></div>
-                            <div class="c-box">
-                                <h3>主讲：胡黎</h3>
-                                <div class="desc">中国人民大学国际关系学院教授</div>
-                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                        <div class="pub-box pub-box-border">
+                            <div class="title-box">
+                                <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="item">
+                                    <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                                    <div class="c-box">
+                                        <h3>主讲：胡黎</h3>
+                                        <div class="desc">中国人民大学国际关系学院教授</div>
+                                        <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="pub-box pub-box-border">
-                    <div class="title-box">
-                        <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="item">
-                            <div class="pic-thumb"><img src="images/i003.jpg" /></div>
-                            <div class="c-box">
-                                <h3>主讲：胡黎</h3>
-                                <div class="desc">中国人民大学国际关系学院教授</div>
-                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                        <div class="pub-box pub-box-border">
+                            <div class="title-box">
+                                <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="item">
+                                    <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                                    <div class="c-box">
+                                        <h3>主讲：胡黎</h3>
+                                        <div class="desc">中国人民大学国际关系学院教授</div>
+                                        <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="pub-box pub-box-border">
-                    <div class="title-box">
-                        <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
-                    </div>
-                    <div class="content-box">
-                        <div class="item">
-                            <div class="pic-thumb"><img src="images/i003.jpg" /></div>
-                            <div class="c-box">
-                                <h3>主讲：胡黎</h3>
-                                <div class="desc">中国人民大学国际关系学院教授</div>
-                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                        <div class="pub-box pub-box-border">
+                            <div class="title-box">
+                                <div class="title">正在学习：湖北最冷的时候到了! 武汉要下8天雪是真的吗湖北最冷的时候到了! 武汉要下8天雪是真的吗</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="item">
+                                    <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                                    <div class="c-box">
+                                        <h3>主讲：胡黎</h3>
+                                        <div class="desc">中国人民大学国际关系学院教授</div>
+                                        <div class="otherInfo"><span class="s-box s-icon-sj">时长：1小时30分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：198</span></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -141,5 +132,6 @@
             </div>
         </div>
     </div>
+    <%- include common/footer.ejs %>
 </body>
 </html>

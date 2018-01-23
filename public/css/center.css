@@ -1,0 +1,210 @@
+.container{background-color: #f3f4f6;}
+
+.top{
+    width: 100%;
+    height: 2.4rem;
+    background-image: url(../img/center/top.png);
+	background-size: 100% 3.9rem;
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	position: relative;
+	padding-left: 2.4rem;
+}
+
+.top .avatar{
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 0..8rem;
+    padding: 0.2rem;
+    background-image: url(../img/center/avatar-box.png);
+	background-size: 100% 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	position: absolute;
+	left: 0.4rem;
+	top: 0.4rem;
+}
+
+.top .avatar img{
+	width: 100%;
+	height: 100%;
+	border-radius: 0.7rem;
+}
+
+.top .info-box{color: #ffffff;
+	padding-top: 0.4rem;
+}
+.top .info-box span{
+	display: inline-block;
+	line-height: 1.5;
+	font-size: 0.28rem;
+	display: block;
+
+}
+.top .info-box .time{
+	margin-top: 0.3rem;
+	font-size: 0.22rem;
+}
+
+.tab-bar{
+	height: 0.8rem;
+	border-bottom: 0.01rem solid #ccc;
+}
+
+.tab-bar span{
+	width: 33%;
+	height: 0.8rem;
+	padding-left: 0.8rem;
+	background-position: 0.2rem center;
+	background-repeat: no-repeat;
+	float: left;
+	color: #333;
+	line-height: 0.8rem;
+	font-size: 0.28rem;
+}
+
+.tab-bar span.xxls{
+	background-image: url(../img/center/xxls.png);
+	background-size: 0.49rem 0.38rem;
+}
+
+.tab-bar span.xinde{
+	background-image: url(../img/center/xinde.png);
+	background-size: 0.32rem 0.42rem;
+	border-left: 0.01rem solid #ccc;
+	border-right: 0.01rem solid #ccc;
+}
+
+.tab-bar span.dzzs{
+	background-image: url(../img/center/xxls.png);
+	background-size: 0.4rem 0.4rem;
+}
+
+.more-bar{
+	margin-top: 0.2rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	border-top: 0.01rem solid #ccc;
+	border-bottom: 0.01rem solid #ccc;
+	padding: 0 0.6rem 0 0.8rem;
+	background-position: 0.18rem center;
+	background-repeat: no-repeat;
+	background-size: 0.44rem 0.44rem;
+	text-align: left;
+	position: relative;
+	font-size: 0.3rem;
+}
+
+.more-bar.fav{
+	background-image: url(../img/center/fav.png);
+}
+
+.more-bar.task{
+	background-image: url(../img/center/task.png);
+}
+
+.more-bar .more{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0.6rem;
+	height: 0.8rem;
+	background-image: url(../img/center/arr.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 0.19rem 0.28rem;
+}
+
+
+.order-bar{
+	margin-top: 0.2rem;
+	height: 0.9rem;
+	line-height: 0.9rem;
+	border-top: 0.01rem solid #ccc;
+	border-bottom: 0.01rem solid #ccc;
+	position: relative;
+	font-size: 0.3rem;
+	text-align: center;
+}
+
+.order-bar span{
+
+}
+
+.order-bar span:first-child{
+	padding-right: 0.5rem;
+	border-right: 0.03rem solid #000;
+}
+
+.order-bar span:last-child{
+	padding-left: 0.5rem;
+}
+
+.order-list{
+	padding: 0 0.8rem;
+	background-color: #fff;
+	position: relative;
+}
+
+.order-list {
+	border-bottom: 0.01rem solid #ccc;
+}
+
+.order-list .rtbar{
+	position: absolute;
+	right: 0.2rem;
+	top: 0.2rem;
+	background-image: url(../img/list-bar.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 0.4rem 4.9rem;
+	width: 0.4rem;
+	height: 4.9rem;
+}
+
+.order-list li{
+	line-height: 0.85rem;
+	padding-left: 0.6rem;
+	padding-right: 1.6rem;
+	border-bottom: 0.01rem solid #ccc;
+	position: relative;
+}
+.order-list li:last-child{
+	border: 0;
+}
+.order-list li .index{
+	position: absolute;
+	left: 0;
+	top: 0.22rem;
+	width: 0.4rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	background-image: url(../img/center/nobox.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 0.4rem 0.4rem;
+	text-align: center;
+}
+
+.order-list li.active .index{
+	background-color: #fd7d71;
+}
+
+.order-list li .name{
+	font-size: 0.32rem;
+}
+
+.order-list li .time{
+	position: absolute;
+	right: 0;
+	top: 0.22rem;
+	width: 2.9rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	background-image: url(../img/center/audio.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 0.39rem 0.34rem;
+	text-align: center;
+}

@@ -96,9 +96,59 @@ router.get('/index', function (req, res, next) {
             return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
         }
         // if(!user.name){
-        //     return res.redirect(config.redirectPath + '/auth');
+        //     return res.redirect(config.redirectPath + 'auth');
         // }
         return res.render('index');   
+    });
+});
+
+
+router.get('/studytasklist', function (req, res, next) {
+    login(req, res, function(err, user){
+        if(err || !user ){
+            return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
+        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + 'auth');
+        // }
+        return res.render('studytasklist');   
+    });
+});
+
+router.get('/studylist', function (req, res, next) {
+    login(req, res, function(err, user){
+        if(err || !user ){
+            return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
+        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + 'auth');
+        // }
+        return res.render('studylist');   
+    });
+});
+
+
+router.get('/experiencelist', function (req, res, next) {
+    login(req, res, function(err, user){
+        if(err || !user ){
+            return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
+        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + 'auth');
+        // }
+        return res.render('experiencelist');   
+    });
+});
+
+router.get('/center', function (req, res, next) {
+    login(req, res, function(err, user){
+        if(err || !user ){
+            return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
+        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + 'auth');
+        // }
+        return res.render('center');   
     });
 });
 
