@@ -26,8 +26,8 @@ var login = function (req, res, callback) {
         complete : 1
     };
     var view = 'index';
-    // req.session.user = user;
-    // return callback(null, user);
+    req.session.user = user;
+    return callback(null, user);
     if(req.session && req.session.user){
         openid = req.session.user.openid;
         userModel.queryUserByOpenid(openid, function(err, users){
@@ -95,9 +95,9 @@ router.get('/index', function (req, res, next) {
         if(err || !user ){
             return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
         }
-        if(!user.name){
-            return res.redirect(config.redirectPath + '/auth');
-        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + '/auth');
+        // }
         return res.render('index');   
     });
 });
