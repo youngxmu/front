@@ -1,22 +1,22 @@
 var path = require('path');
 
 module.exports = {
-	port: 8583, 
+	port: 8200,
 	viewEngine: 'ejs',
 	views: path.resolve(__dirname, '..', 'views'),
 	staticPath: path.resolve(__dirname, '..', 'public'),
 	uploadDir: path.resolve(__dirname, '..', 'public/uploads'),
 	env: 'dev',
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
-	redirectPath : '/',
-	// redirectPath : 'http://act.cnhubei.com/sdkj/',
+	// redirectPath : '/',
+	redirectPath : 'http://dj.hifidiy.net/front/',
 	sessionSecret: 'session_secret_random_seed',
-	wxapptype : 'jcw',
+	wxapptype : 'zy',
 	//mysql config
-	host: "10.99.113.47",
-	user: "root",
-	password: "123a321",
-	database: "sdkj",
+	host: "dangjianyun.mysql.rds.aliyuncs.com",
+	user: "cnhubei",
+	password: "Dangjian@098",
+	database: "front",
 	enableDBLog: false,
 	winston:{
 		exceptionFile:path.resolve(__dirname, '..', 'logs/exceptions.log'),

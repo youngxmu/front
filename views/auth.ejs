@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+	<meta name="applicable-device" content="mobile">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=no">
+	<base href="http://10.99.13.128:8200/">
+	<link rel='stylesheet' href='css/common.css' />
+	<link rel='stylesheet' href='http://s.act.cnhubei.com/static/reform/css/weui.min.css' />
+	<title>补充信息</title>
+	<script>
+		(function (doc, win) { 
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				recalc = function () {
+					var clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					docEl.style.fontSize = parseInt(100 * (clientWidth / 320) * 320 / 640,10) + 'px';
+				};
+			if (!doc.addEventListener) return; 
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+ 	</script>
+</head>
+<body>
+	<div class="weui-msg">
+		<div class="weui-msg__icon-area">
+		</div>
+		<div class="weui-cells__title" style="font-size:20px;">请补充信息</div>
+		<div class="weui-msg__text-area">
+			<div id="form" class="weui-cells weui-cells_form">
+	            <div class="weui-cell">
+	                <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="text" name="name" value="" placeholder="请输入姓名">
+	                </div>
+	            </div>
+	            <div class="weui-cell">
+	                <div class="weui-cell__hd"><label class="weui-label">身份证</label></div>
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="text" name="identity" value="" placeholder="请输入身份证">
+	                </div>
+	            </div>
+	            <div class="weui-cell">
+	                <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="tel" name="tel" value="" placeholder="请输入手机号">
+	                </div>
+	            </div>
+	            <!-- <div class="weui-cell weui-cell_vcode">
+	                <div class="weui-cell__hd">
+	                    <label class="weui-label">手机号</label>
+	                </div>
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="tel" placeholder="请输入手机号">
+	                </div>
+	                <div class="weui-cell__ft">
+	                    <button class="weui-vcode-btn">获取验证码</button>
+	                </div>
+	            </div>
+	            <div class="weui-cell weui-cell_vcode">
+	                <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="number" placeholder="请输入验证码">
+	                </div>
+	                <div class="weui-cell__ft">
+	                    <img class="weui-vcode-img" src="./images/vcode.jpg">
+	                </div>
+	            </div> -->
+	        </div>
+		</div>
+
+		<div class="weui-btn-area" id="btn_commit">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips" style="color:#fff;">确定</a>
+        </div>
+	</div>
+
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn_commit').click(commit);
+			var commit = function(){
+				if(loading)	{
+					return weui.alert('正在提交');
+				}
+				loading = true;
+				var data = {};
+				var flag = true;
+				$('#form input').each(function(){
+					var $this = $(this);
+					var key = $this.attr('name');
+					var val = $this.val();
+					if(!val){
+						flag = false;
+					}
+					data[key] = val;
+				});
+
+				if(!flag){
+					loading = false;
+					return weui.alert('请完善所有信息');
+				}
+
+				$.ajax({
+					url : 'auth',
+					type : 'post',
+					data : data,
+					beforeSend : function(){
+						loadingDlg = weui.loading('正在加载');
+					},
+					success : function(result){
+						if(!result.success){
+							return weui.alert(result.msg);
+						}
+						window.location.href = 'index';
+					},
+					complete : function(){
+						loadingDlg.hide();
+						loading = false;
+					}
+				});
+			}
+			
+		});
+	</script>
+</body>
+</html>

@@ -38,424 +38,96 @@ fis.config.merge({
         ]
     },
     deploy : {
-         nodeStatic63 : [
-            {
-                receiver : 'http://10.99.113.63:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.63:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.63:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            }
-        ],
         nodeS1 : [
             {
-                receiver : 'http://10.99.113.63:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
-                to : '/young/static/sdkj',
+                to : '/static/front',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.3:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
-                to : '/young/static/sdkj',
+                to : '/node/front/public',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.15:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/views/**'],
                 from : '/views',
-                to : '/young/node/sdkj/views',
+                to : '/node/front/views',
                 subOnly : true,
                 replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
+                    from : 'http://10.99.13.128:8200',
+                    to : 'http://dj.hifidiy.net/front'
                 }
             }
         ],
         node1 : [
             {
-                receiver : 'http://10.99.113.63:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
-                to : '/young/static/sdkj',
+                to : '/static/front',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.3:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
-                to : '/young/static/sdkj',
+                to : '/node/front/public',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.15:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/views/**'],
                 from : '/views',
-                to : '/young/node/sdkj/views',
+                to : '/node/front/views',
                 subOnly : true,
                 replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
+                    from : 'http://10.99.13.128:8200',
+                    to : 'http://dj.hifidiy.net/front'
                 }
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/config/*.js'],
                 from : '/config',
-                to : '/young/node/sdkj/config',
+                to : '/node/front/config',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/lib/**'],
                 from : '/lib',
-                to : '/young/node/sdkj/lib',
+                to : '/node/front/lib',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/routes/*.js'],
                 from : '/routes',
-                to : '/young/node/sdkj/routes',
+                to : '/node/front/routes',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['/models/**'],
                 from : '/models',
-                to : '/young/node/sdkj/models',
+                to : '/node/front/models',
                 subOnly : true
             },
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['app.js'],
                 from : '/',
-                to : '/young/node/sdkj',
+                to : '/node/front',
                 subOnly : true
             }
             ,
             {
-                receiver : 'http://10.99.113.15:8999/receiver',
+                receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 include : ['route.js'],
                 from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-        ],
-        nodeS2 : [
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            }
-        ],
-        node2 : [
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/config/*.js'],
-                from : '/config',
-                to : '/young/node/sdkj/config',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/lib/**'],
-                from : '/lib',
-                to : '/young/node/sdkj/lib',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/routes/*.js'],
-                from : '/routes',
-                to : '/young/node/sdkj/routes',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['/models/**'],
-                from : '/models',
-                to : '/young/node/sdkj/models',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['app.js'],
-                from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-            ,
-            {
-                receiver : 'http://10.99.113.73:8999/receiver',
-                include : ['route.js'],
-                from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-        ],
-        nodeS3 : [
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            }
-        ],
-        node3 : [
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/config/*.js'],
-                from : '/config',
-                to : '/young/node/sdkj/config',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/lib/**'],
-                from : '/lib',
-                to : '/young/node/sdkj/lib',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/routes/*.js'],
-                from : '/routes',
-                to : '/young/node/sdkj/routes',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['/models/**'],
-                from : '/models',
-                to : '/young/node/sdkj/models',
-                subOnly : true
-            },
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['app.js'],
-                from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-            ,
-            {
-                receiver : 'http://10.99.113.51:8999/receiver',
-                include : ['route.js'],
-                from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-        ],
-        nodeSY : [
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            }
-        ],
-        nodeY : [
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                from : '/public',
-                to : '/young/node/sdkj/public',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                from : '/public',
-                to : '/young/static/sdkj',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/views/**'],
-                from : '/views',
-                to : '/young/node/sdkj/views',
-                subOnly : true,
-                replace : {
-                    from : 'http://10.99.13.128:8583',
-                    to : 'http://act.cnhubei.com/sdkj'
-                }
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/config/*.js'],
-                from : '/config',
-                to : '/young/node/sdkj/config',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/lib/**'],
-                from : '/lib',
-                to : '/young/node/sdkj/lib',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/routes/*.js'],
-                from : '/routes',
-                to : '/young/node/sdkj/routes',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['/models/**'],
-                from : '/models',
-                to : '/young/node/sdkj/models',
-                subOnly : true
-            },
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['app.js'],
-                from : '/',
-                to : '/young/node/sdkj',
-                subOnly : true
-            }
-            ,
-            {
-                receiver : 'http://119.29.217.19:8999/receiver',
-                include : ['route.js'],
-                from : '/',
-                to : '/young/node/sdkj',
+                to : '/node/front',
                 subOnly : true
             }
         ]

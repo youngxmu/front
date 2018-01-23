@@ -1,22 +1,19 @@
 var db = require('../lib/db.js');
 
 exports.query = function(id, callback){
-    var sql = 'select u.*,count(v.uid) as count from user u  left join vote v on u.id = v.uid where u.id=? GROUP BY v.uid;'
+    var sql = 'select u.* from user u where u.id=?;'
     db.query(sql, [id], callback);
 };
 
-exports.queryUserVoteCount = function(id, type, callback){
-    var sql = 'select count(uid) as count from vote where uid = ? and type = ?;'
-    db.query(sql, [id, type], callback);
+exports.update = function(id, name, identity, tel, callback){
+    var sql = 'update user set name=?, identity = ?, tel = ? where id = ?;'
+    db.query(sql, [name, identity, tel, id], callback);
 };
 
-exports.queryUserVoteCounts = function(id, callback){
-    var sql = 'select type, count(uid) as count from vote where uid = ? GROUP BY uid;'
-    db.query(sql, [id], callback);
-};
+
 
 exports.queryUserByOpenid = function(openid, callback){
-    var sql = 'select u.*,count(v.uid) as count from user u  left join vote v on u.id = v.uid where u.openid=? GROUP BY v.uid;'
+    var sql = 'select u.* from user u where u.openid=?;'
     db.query(sql, [openid], callback);
 };
  

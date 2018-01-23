@@ -127,12 +127,3 @@ process.on('uncaughtException', function(err) {
     logger.error('Holy shit!!!!! Fatal Errors!!!!!!! ' , err);
 });
 
-// var ipUtils =  require('./lib/ipUtils.js');
-// ipUtils.queryDBIPs(function(){});
-
-// var sysUtils =  require('./lib/sysUtils.js');
-// sysUtils.getDBCounts(function(){});
-// setInterval(function(){
-//     sysUtils.getDBCounts(function(){});
-// }, 5 * 1000);
-
