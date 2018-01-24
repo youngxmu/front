@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <title>学习历史</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/minirefresh.min.js"></script>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/minirefresh.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/common.css" rel="stylesheet" />
+    <link type="text/css" href="css/web.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            //var appendTestData = Common.appendTestData,
+            //    bindEvent = Common.bindEvent,
+                // 记录一个最新
+            var   maxDataSize = 30,
+                listDom = document.querySelector('#listdata'),
+                requestDelayTime = 600,
+                isCssTranslate = true;
+
+            var miniRefresh = new MiniRefresh({
+                container: '#minirefresh',
+                down: {
+                    // 本主题的特色，是否开启wrap的css translate
+                    // 虽然继承自default的主题也有这个变量，但是目前只建议在defaul和applet中使用
+                    // default默认是关闭的 applet默认是开启的
+                    isWrapCssTranslate: isCssTranslate,
+                    callback: function () {
+                        setTimeout(function () {
+                            // 每次下拉刷新后，上拉的状态会被自动重置
+                            //appendTestData(listDom, 10, true);
+                            miniRefresh.endDownLoading(true);
+                        }, requestDelayTime);
+                    }
+                },
+                up: {
+                    isAuto: true,
+                    callback: function () {
+                        setTimeout(function () {
+                           // appendTestData(listDom, 10);
+                            miniRefresh.endUpLoading(listDom.children.length >= maxDataSize ? true : false);
+                        }, requestDelayTime);
+                    }
+                }
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    
+    <div id="minirefresh" class="minirefresh-wrap">
+
+        <div class="minirefresh-scroll">
+            <header class="header"><img src="images/i001.jpg" /></header>
+            <div id="listdata">
+                <div class="pub-box pub-box-border">
+                    <div class="title-box">
+                        <div class="title">《中国民族近代以来最伟大的梦想》4.实干才能梦想成真</div>
+                    </div>
+                    <div class="content-box">
+                        <div class="item">
+                            <div class="pic-thumb"><img src="http://fdfs.xmcdn.com/group34/M05/73/DC/wKgJYVoFaxDACkCAAAHOjDBToSk903_mobile_small.jpg" /></div>
+                            <div class="c-box">
+                                <h3>主讲：习近平</h3>
+                                <div class="desc">《中华民族近代以来最伟大的梦想》</div>
+                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：4分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：220</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-box pub-box-border">
+                    <div class="title-box">
+                        <div class="title">《中国民族近代以来最伟大的梦想》3.坚持中国道路、弘扬中国精神、凝聚中国力量</div>
+                    </div>
+                    <div class="content-box">
+                        <div class="item">
+                            <div class="pic-thumb"><img src="http://fdfs.xmcdn.com/group34/M05/FF/3A/wKgJYFoFav2Dq_9iAAHOjDBToSk232_mobile_small.jpg" /></div>
+                            <div class="c-box">
+                                <h3>主讲：习近平</h3>
+                                <div class="desc">《中华民族近代以来最伟大的梦想》</div>
+                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：6分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：158</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pub-box pub-box-border">
+                    <div class="title-box">
+                        <div class="title">《中华民族近代以来最伟大的梦想》2.中国梦归根到底是人民的梦</div>
+                    </div>
+                    <div class="content-box">
+                        <div class="item">
+                            <div class="pic-thumb"><img src="http://fdfs.xmcdn.com/group33/M03/E1/9A/wKgJUVoFavCglf08AAHOjDBToSk550_mobile_small.jpg" /></div>
+                            <div class="c-box">
+                                <h3>主讲：习近平</h3>
+                                <div class="desc">《中华民族近代以来最伟大的梦想》</div>
+                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：4分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：165</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="pub-box pub-box-border">
+                    <div class="title-box">
+                        <div class="title">《中华民族近代以来最伟大的梦想》1.中国梦凝聚了几代中国人的夙愿</div>
+                    </div>
+                    <div class="content-box">
+                        <div class="item">
+                            <div class="pic-thumb"><img src="http://fdfs.xmcdn.com/group33/M03/E1/99/wKgJUVoFauOzKHAfAAHOjDBToSk215_mobile_small.jpg" /></div>
+                            <div class="c-box">
+                                <h3>主讲：习近平</h3>
+                                <div class="desc">《中华民族近代以来最伟大的梦想》</div>
+                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：5分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：125</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pub-box pub-box-border">
+                    <div class="title-box">
+                        <div class="title">开篇：实现“两个一百年”奋斗目标和中华民族伟大复兴的科学理论指导和行动指南</div>
+                    </div>
+                    <div class="content-box">
+                        <div class="item">
+                            <div class="pic-thumb"><img src="http://fdfs.xmcdn.com/group33/M03/E1/97/wKgJUVoFatTgsw7IAAHOjDBToSk048_mobile_small.jpg" /></div>
+                            <div class="c-box">
+                                <h3>主讲：习近平</h3>
+                                <div class="desc">《习近平总书记系列重要讲话读本》（2016年版）</div>
+                                <div class="otherInfo"><span class="s-box s-icon-sj">时长：9分钟</span><span class="s-box s-icon-rs marginLeft10">选课人数：666</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="height50"></div>
+    <footer class="index-footer container">
+        <div class="row">
+            <div class="item col-xs-4"><a href="studyrecord.html"><img src="images/icon011.jpg" />学习历史</a></div>
+            <div class="item col-xs-4"><a href="experiencelist.html"><img src="images/icon012.jpg" />心得体会</a></div>
+            <div class="item col-xs-4"><img src="images/icon013.jpg" />个人中心</div>
+        </div>
+    </footer>
+</body>
+</html>
