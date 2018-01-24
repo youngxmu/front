@@ -68,7 +68,7 @@ span.s-icon-view { background: url(../images/icon016.jpg) 0 .5rem no-repeat; bac
 .pub-box-border-color1 { border-bottom-color: #e6e6e6 !important }
 /*底部*/
 footer.index-footer, footer.study-task-footer { position: fixed; bottom: 0; left: 0; right: 0; height: 5rem; border-top: .1rem #d6d6d6 solid; background: #fff; z-index: 9999; }
-footer.index-footer .item { text-align: center; vertical-align: middle; line-height: 5rem; }
+footer.index-footer .item { text-align: center; vertical-align: middle; line-height: 5rem; padding: 0 0.15rem;}
 footer.index-footer .item img { width: 2.5rem; height: 2rem; vertical-align: middle; margin-right: .3rem; }
 footer.study-task-footer .col { width: 50%;  float: left; }
 footer.study-task-footer .col button { display: block; width: 12.1rem; height: 2.1rem; text-align: center; color: #fff; border-radius: .3rem; margin: 0 auto; margin-top:1.4rem; }
@@ -99,7 +99,7 @@ footer.study-task-footer .col button.b2 { background-color: #3ea592; }
 /*学习任务列表*/
 .study-task-area { padding: 2rem; }
 .study-task-area h1 { font-size: 1.6rem; color: #1c1b20 }
-.study-task-list { list-style-type: none; padding-top: .8rem; padding-bottom: .8rem; }
+/*.study-task-list { list-style-type: none; padding-top: .8rem; padding-bottom: .8rem; }
 .study-task-list li { background: url(../images/icon005.jpg) 0 1.2rem no-repeat; background-size: 1.1rem 1.1rem; padding-left: 2rem; padding-top: .8rem; padding-bottom: .8rem; }
-.study-task-list li a { color: #888787; }
-.study-task-list li i { float: right; display: inline-block; width: 1.6rem; height: 1.6rem; margin-top: 0.2rem; background: #f46953; border-radius: .8rem; font-size: 0.6rem; line-height: 1.6rem; color: #fff; box-shadow: 0 0 .2rem #888888; }
+.study-task-list li a { color: #888787; }*/
+/*.study-task-list li i { float: right; display: inline-block; width: 1.6rem; height: 1.6rem; margin-top: 0.2rem; background: #f46953; border-radius: .8rem; font-size: 0.6rem; line-height: 1.6rem; color: #fff; box-shadow: 0 0 .2rem #888888; }*/

@@ -8,8 +8,8 @@ module.exports = {
 	uploadDir: path.resolve(__dirname, '..', 'public/uploads'),
 	env: 'dev',
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
-	// redirectPath : '/',
-	redirectPath : 'http://dj.hifidiy.net/front/',
+	redirectPath : '/',
+	// redirectPath : 'http://dj.hifidiy.net/front/',
 	sessionSecret: 'session_secret_random_seed',
 	wxapptype : 'zy',
 	//mysql config
