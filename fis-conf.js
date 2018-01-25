@@ -43,12 +43,14 @@ fis.config.merge({
                 receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
                 to : '/static/front',
+                exclude : ['/public/audio/', '/public/PreloadJS-master/', '/public/SoundJS-master/'],
                 subOnly : true
             },
             {
                 receiver : 'http://dj.hifidiy.net/nrec/receiver',
                 from : '/public',
                 to : '/node/front/public',
+                exclude : ['/public/audio/', '/public/PreloadJS-master/', '/public/SoundJS-master/'],
                 subOnly : true
             },
             {

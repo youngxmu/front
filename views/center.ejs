@@ -25,20 +25,18 @@
         doc.addEventListener('DOMContentLoaded', recalc, false);
         })(document, window);
     </script>
-    <style type="text/css">
-        
-    </style>
 </head>
 <body>
+    <input id="openid" type="hidden" value="<%= openid %>">
     <div id="wrapper" class="container">
         <div class="top">
             <div class="avatar">
-                <img src="http://dj.hifidiy.net/web/images/usericon.JPG">
+                <img src="<%= avatar %>">
             </div>
             <div class="info-box">
-                <span>会员：汪海波</span>
-                <span>所在支部：荆楚网第一支部</span>
-                <span class="time">学习时长：28分钟</span>
+                <span>会员：<%=nickname%></span>
+                <span>所在支部：第一支部</span>
+                <span class="time">学习时长：<span id="min" style="display: inline-block;">0分钟</span></span>
             </div>
         </div>
 
@@ -58,36 +56,69 @@
             <li class="active">
                 <span class="index">1</span>
                 <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="time">时长：2小时1分钟</span>
             </li>
             <li>
                 <span class="index">2</span>
-                <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="name">凌霄</span>
+                <span class="time">时长：2小时12分钟</span>
             </li>
             <li>
                 <span class="index">3</span>
-                <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="name">黑白灰</span>
+                <span class="time">时长：1小时3分钟</span>
             </li>
             <li>
                 <span class="index">4</span>
-                <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="name">茉莉</span>
+                <span class="time">时长：1小时16分钟</span>
             </li>
             <li>
                 <span class="index">5</span>
-                <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="name">赵子明</span>
+                <span class="time">时长：1小时54分钟</span>
             </li>
             <li>
                 <span class="index">6</span>
-                <span class="name">余杨志</span>
-                <span class="time">时长：1小时30分钟</span>
+                <span class="name">王则杰</span>
+                <span class="time">时长：1小时19分钟</span>
             </li>
             <span class="rtbar"></span>
-            
         </ul>
     </div>
+    <script>
+        $(document).ready(function() {
+            var openid = $('#openid').val();
+            $.ajax({
+                url : '/front/timeapi/get',
+                type : 'get',
+                data : {
+                    openid:openid
+                },
+                success : function(result){
+                    var sec = parseInt(result);
+                    if(sec < 60){
+                        return $('#min').text(sec + '秒');    
+                    }
+                    
+                    if(sec < 3600){
+                        var min = Math.floor(sec/60);
+                        sec = sec%60;
+                        return $('#min').text(min+'分' + sec + '秒');    
+                    }
+
+                    var hour = Math.floor(sec/3600);
+                    sec = sec%3600;
+                    min = Math.floor(sec/60);
+                    sec = sec%60;
+                    return $('#min').text(hour+'时'+min+'分' + sec + '秒');    
+                    // console.log(result);
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

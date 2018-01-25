@@ -24,15 +24,15 @@ app.use(log4js.connectLogger(logger, {
 app.use(bodyParser());
 app.use(methodOverride());
 app.use(cookie); //须在expressSession前使用cookieParser
-// var sessionStore = new expressSession.MemoryStore();
-var sessionStore = require('connect-redis')(expressSession);
+var sessionStore = new expressSession.MemoryStore();
+// var sessionStore = require('connect-redis')(expressSession);
 app.use(expressSession({
     resave:false,//添加这行  
     saveUninitialized: true,//添加这行   
     secret: config.sessionSecret,
     key: 'reform122231id', //种到cookies里的标识
-    store: new sessionStore({host: config.redis.address, port : config.redis.port, ttl: 900,pass : config.redis.passwd})
-    // store: sessionStore
+    // store: new sessionStore({host: config.redis.address, port : config.redis.port, ttl: 900,pass : config.redis.passwd})
+    store: sessionStore
 }));
 //app.use(csrf());
 app.use(express.static(config.staticPath));

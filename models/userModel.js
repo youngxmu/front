@@ -17,7 +17,7 @@ exports.queryUserByOpenid = function(openid, callback){
     db.query(sql, [openid], callback);
 };
  
-var insertSql = 'insert into user(openid, nickname, create_time) values(?,?,?);';
-exports.insert = function (openid, nickname, callback) {
-    db.query(insertSql, [openid, nickname, new Date()], callback);
+var insertSql = 'insert into user(openid, nickname, avatar, create_time) values(?,?,?,?);';
+exports.insert = function (openid, nickname, avatar, callback) {
+    db.query(insertSql, [openid, nickname, avatar, new Date()], callback);
 };

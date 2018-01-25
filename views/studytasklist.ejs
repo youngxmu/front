@@ -20,7 +20,7 @@
     <link type="text/css" href="css/style.css" rel="stylesheet" />
     <script>
         $(function () {
-            var assetsPath = "/audio/";
+            var assetsPath = "/front/audio/";
             var manifest = [{
                 id: '-1',
                 singer: "庄心妍",
@@ -84,26 +84,37 @@
                 }
             });
             $("#sound-next").click(function () {
+                var $curr = $('.study-task-list .active');
+                var $next = $curr.next('li');
+                if($next.length > 0){
+                    $next.addClass('active').siblings('li').removeClass('active');
+                }
                 soundPlayer.next();
             });
             $("#sound-prev").click(function () {
+                var $curr = $('.study-task-list .active');
+                var $prev = $curr.prev('li');
+                if($prev.length > 0){
+                    $prev.addClass('active').siblings('li').removeClass('active');
+                }
                 soundPlayer.prev();
             });
         })
     </script>
 </head>
 <body>
+    <input id="openid" type="hidden" value="<%= openid %>">
     <div class="menber-area">
         <div class="menber-icon"><img src="images/usericon.JPG" /></div>
         <div class="menber-info">
-            <h2>会员：胡黎</h2>
-            <p>学习时间：1小时5分钟&nbsp;&nbsp;学习积分：999</p>
+            <h2>会员：<%= nickname %></h2>
+            <p>学习时间：<span id="min"></span>&nbsp;&nbsp;学习积分：10</p>
         </div>
     </div>
     <div class="partyMember-area pub-box-border"><i><img src="images/i004.jpg" /></i>党员信息：我在XXX党组织排名33名</div>
     <div class="study-area">
-        <h5 id="sound-title">正在学习：领导干部要做践行“三严三实”的模范</h5>
-        <div class="sound-desc" id="sound-desc">简介：领导干部要做践行“三严三实”的模范</div>
+        <h5 id="sound-title">正在学习：<%= title %></h5>
+        <div class="sound-desc" id="sound-desc">简介：<%= intro %></div>
         <div class="study-progress">
             <span class="i leftI"><span class="progress-text" id="sound-current-progress">00:00</span></span><span class="line"><span id="curProgress" class="curProgress" style="width:0%"><i class="bar"></i></span></span><span class="i"><span class="progress-text" id="sound-total-progress">00:00</span></span>
         </div>
@@ -114,7 +125,6 @@
                 <div class="col-3"><a id="sound-play" class="btn-play" href="javascript:void(0)"><i class=" fa fa-play fa-fw fa-align-center"></i></a></div>
                 <div class="col-4"><a id="sound-next" class="btn-next" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a></div>
                 <div class="col-5"><a class="btn-clock"><img src="images/icon002.jpg" /><p>定时关闭</p></a></div>
-
             </div>
         </div>
         <!--<div class="study-info"><span class="s-box s-icon-zj" id="sound-singer">主讲：胡黎</span><span id="sound-time" class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>-->
@@ -123,12 +133,12 @@
     <div class="study-task-area">
         <h1>课程列表</h1>
         <ul class="study-task-list">
-            <li class="pub-box-border pub-box-border-color1 active"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
-            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
-            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
-            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
-            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
-            <li class="pub-box-border pub-box-border-color1"><a href="#">领导干部要做践行“三严三实”的模范</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1 active"><a href="#">推动高质量发展需“七个坚持”（上篇）</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">推动高质量发展需“七个坚持”（下篇）</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">如何理解和把握中国经济新思想</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">习近平推动中国经济发生三大转变</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">如何理解中央经济工作会议精神？</a><i class=""></i></li>
+            <li class="pub-box-border pub-box-border-color1"><a href="#">人民日报：牢牢把握高质量发展这个根本要求</a><i class=""></i></li>
         </ul>
     </div>
     <div class="height50"></div>
@@ -136,6 +146,78 @@
         <div class="col"><button class="b1">自我测试</button></div>
         <div class="col"><button class="b2">在线考试</button></div>
     </footer>
-    
+    <script src="js/lib/juicer.js"></script>
+     <script type="text/template" id="item-tpl">
+    {@each list as item, index}
+     <li class="pub-box-border pub-box-border-color1 active"><a href="#">推动高质量发展需“七个坚持”（上篇）</a><i class=""></i></li>
+    {@/each}
+    </script>
+     <script>
+        $(document).ready(function() {
+            var openid = $('#openid').val();
+            $.ajax({
+                url : '/front/timeapi/get',
+                type : 'get',
+                data : {
+                    openid:openid
+                },
+                success : function(result){
+                    var sec = parseInt(result);
+                    if(sec < 60){
+                        return $('#min').text(sec + '秒');    
+                    }
+                    
+                    if(sec < 3600){
+                        var min = Math.floor(sec/60);
+                        sec = sec%60;
+                        return $('#min').text(min+'分' + sec + '秒');    
+                    }
+
+                    var hour = Math.floor(sec/3600);
+                    sec = sec%3600;
+                    min = Math.floor(sec/60);
+                    sec = sec%60;
+                    return $('#min').text(hour+'时'+min+'分' + sec + '秒');    
+                    // console.log(result);
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+            
+             var tpl = juicer($('#item-tpl').html());
+            $.ajax({
+                url : '/audio/track.json',
+                type : 'get',
+                dataType : 'json',
+                success : function(result){
+                    var html = '';
+                    html = tpl.render({list:result});
+                    $('#study_content_box').html(html);
+                    var owl = $("#study_content_box").owlCarousel({
+                        items: 1,
+                        loop: true,
+                        autoplay: true,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: true,
+                        transitionStyle: "fade",
+                        dots: true,
+
+                    }).on('changed.owl.carousel', function (event) {
+                        var page = event.page.index;
+                        $(".pub-swich-items .item").removeClass("selected");
+                        $(".pub-swich-items .item:eq(" + page + ")").addClass("selected");
+                    });
+                    $(".pub-swich-items .item").click(function () {
+                        var index = $(this).index();
+                        owl.trigger('to.owl.carousel', index);
+                    });
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

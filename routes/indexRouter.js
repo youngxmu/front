@@ -6,6 +6,7 @@ var wxUtils = require("../lib/wxUtils");
 var sysUtils = require("../lib/sysUtils");
 var redisUtils = require("../lib/redisUtils");
 var ipUtils = require("../lib/ipUtils.js");
+var rp = require('request-promise');
 var logger = require("../lib/log").logger("indexRouter");
 var router = express.Router();
 
@@ -18,16 +19,17 @@ router.get('', function (req, res, next) {
 
 var login = function (req, res, callback) {
     var code = req.query.code;
-    var openid = 'o-OiHjkAEb7IEPmIv-GcFS_i6lLE';
+    var openid = 'oAz3H05Hvj-Cvc9440usD3k9iqywis';
     var user = {
         id : 0,
         openid : openid,
         subscribe : 0,
-        complete : 1
+        complete : 1,
+        nickname : 'young'
     };
     var view = 'index';
-    req.session.user = user;
-    return callback(null, user);
+     req.session.user = user;
+     return callback(null, user);
     if(req.session && req.session.user){
         openid = req.session.user.openid;
         userModel.queryUserByOpenid(openid, function(err, users){
@@ -48,7 +50,10 @@ var login = function (req, res, callback) {
                 return callback(err);
             }
             openid = userInfo.openid;
+            
             var nickname = userInfo.nickname;
+            var avatar = userInfo.headimgurl;
+            console.log(nickname + ' '+ avatar);
             if(!nickname){
                 nickname = '未获取';
             }
@@ -58,7 +63,7 @@ var login = function (req, res, callback) {
                     return callback(err);
                 }
                 if(users.length == 0){
-                    userModel.insert(openid, nickname, function(err, result){
+                    userModel.insert(openid, nickname, avatar, function(err, result){
                         if(err){
                             logger.error('insertUser is error, openid is ' + openid + ', nickname is ' + nickname);
                             return callback(err);
@@ -98,7 +103,7 @@ router.get('/index', function (req, res, next) {
         // if(!user.name){
         //     return res.redirect(config.redirectPath + 'auth');
         // }
-        return res.render('index');   
+        return res.render('index', user);   
     });
 });
 
@@ -111,7 +116,14 @@ router.get('/studytasklist', function (req, res, next) {
         // if(!user.name){
         //     return res.redirect(config.redirectPath + 'auth');
         // }
-        return res.render('studytasklist');   
+        var couid = req.query.couid;
+         var title = req.query.title;
+          var intro = req.query.intro;
+        var data =user;
+        data['couid'] = couid;
+        data['title'] = title;
+        data['intro'] = intro;
+        return res.render('studytasklist', data);   
     });
 });
 
@@ -148,12 +160,59 @@ router.get('/center', function (req, res, next) {
         // if(!user.name){
         //     return res.redirect(config.redirectPath + 'auth');
         // }
-        return res.render('center');   
+        return res.render('center', user);   
     });
+});
+
+
+router.get('/studyrecord', function (req, res, next) {
+    login(req, res, function(err, user){
+        if(err || !user ){
+            return res.render('error', {msg: '访问的人数太多啦，请稍后重试'});
+        }
+        // if(!user.name){
+        //     return res.redirect(config.redirectPath + 'auth');
+        // }
+        return res.render('studyrecord');   
+    });
+});
+router.get('/test', function (req, res, next) {
+    res.render('test');
 });
 
 router.get('/auth', function (req, res, next) {
     res.render('auth');
+});
+//
+router.get('/timeapi/:type', function (req, res, next) {
+    if(!req.session.user){
+        console.log('登录过期');
+        res.send(0);
+    }
+    var type = req.params.type;
+    var second = req.query.second;
+    var openid = req.session.user.openid;
+
+    var url = 'http://47.98.35.3:8080/ms/timeapi/' + type + '?openid=' + openid;
+    console.log(type);
+    if(type == 'set'){
+        url += '&second='+second;
+    }
+    console.log(url);
+    var options = {
+        uri: url,
+        headers: {
+            'User-Agent': 'Request-Promise'
+        }
+        // ,json: true // Automatically parses the JSON string in the response
+    };
+    rp(options).then(function (repos) {
+        res.send(repos);
+        
+    }).catch(function (err) {
+        console.log(err);
+        res.send(0);
+    });
 });
 
 router.post('/auth', function (req, res, next) {

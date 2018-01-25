@@ -13,8 +13,8 @@
     <script src="js/owl.carousel.min.js"></script>
     <!--<script type="text/javascript" src="jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="jPlayer-2.9.2/dist/add-on/jplayer.playlist.min.js"></script>-->
-    <!--<script src="PreloadJS-master/lib/preloadjs.min.js"></script>
-    <script src="SoundJS-master/lib/soundjs.min.js"></script>-->
+    <script src="js/lib/preloadjs.min.js"></script>
+    <script src="js/lib/soundjs.min.js"></script>
     <script src="js/soundplayer.js"></script>
     <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
     <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" />
@@ -23,92 +23,83 @@
     <link type="text/css" href="css/web.css" rel="stylesheet" />
     <script>
         $(function () {
-            var owl = $("#study_content_box").owlCarousel({
-                items: 1,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                transitionStyle: "fade",
-                dots: true,
-
-            }).on('changed.owl.carousel', function (event) {
-                var page = event.page.index;
-                $(".pub-swich-items .item").removeClass("selected");
-                $(".pub-swich-items .item:eq(" + page + ")").addClass("selected");
-            });
-            $(".pub-swich-items .item").click(function () {
-                var index = $(this).index();
-                owl.trigger('to.owl.carousel', index);
-            });
-            var soundPlayer = new SoundPlayer({
-                loop: false,
-                autoplay: false,
-                dataList: manifest,
-                playHandler: function (data) {
-                    $("#sound-title").html("正在学习：" + data.singer + " - " + data.title);
-                    $("#sound-singer").html("主讲：" + data.singer);
-                },
-                playingHandler: function (currentTime) {
-                    $("#sound-time").html(currentTime);
-                }
-            });
-            $("#sound-play").click(function () {
-                // createjs.Sound.registerSounds(manifest, assetsPath);
-                //Sound.playHandler();
-                if (!soundPlayer.isPlay) {
-                    soundPlayer.play(function () {
-                        var str = soundPlayer.backTime() + " / " + soundPlayer.backTotTime();
-                        console.log(str);
-                        $("#sound-time").html(str);
-                        $("#curProgress").css("width", soundPlayer.calProcess() + "%");
-                    });
-                    $(this).children("i").removeClass("fa-play").addClass("fa-pause");
-                }
-                else {
-                    soundPlayer.pause();
-                    $(this).children("i").removeClass("fa-pause").addClass("fa-play");
-                }
-            });
-            $("#sound-next").click(function () {
-                soundPlayer.next();
-            });
-            $("#sound-prev").click(function () {
-                soundPlayer.prev();
-            });
+            
+            //var soundPlayer = new SoundPlayer({
+            //    loop: false,
+            //    autoplay: false,
+            //    dataList: manifest,
+            //    playHandler: function (data) {
+            //        $("#sound-title").html("正在学习：" + data.singer + " - " + data.title);
+            //        $("#sound-singer").html("主讲：" + data.singer);
+            //    },
+            //    playingHandler: function (currentTime) {
+            //        $("#sound-time").html(currentTime);
+            //    }
+            //});
+            //$("#sound-play").click(function () {
+            //    // createjs.Sound.registerSounds(manifest, assetsPath);
+            //    //Sound.playHandler();
+            //    if (!soundPlayer.isPlay) {
+            //        soundPlayer.play(function () {
+            //            var str = soundPlayer.backTime() + " / " + soundPlayer.backTotTime();
+            //            console.log(str);
+            //            $("#sound-time").html(str);
+            //            $("#curProgress").css("width", soundPlayer.calProcess() + "%");
+            //        });
+            //        $(this).children("i").removeClass("fa-play").addClass("fa-pause");
+            //    }
+            //    else {
+            //        soundPlayer.pause();
+            //        $(this).children("i").removeClass("fa-pause").addClass("fa-play");
+            //    }
+            //});
+            //$("#sound-next").click(function () {
+            //    soundPlayer.next();
+            //});
+            //$("#sound-prev").click(function () {
+            //    soundPlayer.prev();
+            //});
         })
-        //var soundid = 1;
-        var assetsPath = "/audio/";
+        var soundid = 0;
+        var assetsPath = "/front/audio/";
         var manifest = [{
-            id: '-1',
-            singer: "庄心妍",
-            title: "一万个舍不得111",
-            src: assetsPath + '111.mp3'
+            id: 'a0',//66101770
+            singer: "云飞扬",
+            title: "党要管党丝毫不能松懈，从严治党一刻不能放松",
+            src: assetsPath + 'wKgJTFpfMhHy6kHLAAkHvScPC8I819.m4a',//591805
+            isload: false
         }, {
-            id: '0',
-            singer: "庄心妍",
-            title: "一万个舍不得",
-            src: assetsPath + 'ywgsbd.m4a'
+            id: 'a1',//67402132
+            singer: "云飞扬",
+            title: "我们党对党的建设面临的问题和挑战有着清醒认识",
+            src: assetsPath + 'wKgJLFpfMonxDOIhAAx_UpzZ5G4694.m4a',//819026
+            isload: false
         }, {
-            id: '1',
-            singer: "岑宁儿",
-            title: "追光者",
-            src: assetsPath + 'zgz.mp3'
+            id: 'a2',//67402133
+            singer: "云飞扬",
+            title: "新时代党的建设总要求发生了哪些重大变化？",
+            src: assetsPath + 'wKgJLFpfMpCC5XR3AAZud00jfqg616.m4a',//421495
+            isload: false
         }, {
-            id: '3',
-            singer: "周杰伦",
-            title: "告白气球",
-            src: assetsPath + '107192078.m4a'
-        }, {
-            id: '4',
-            singer: "水木年华",
-            title: "一生有你",
-            src: assetsPath + '95484.m4a'
-        },]
+            id: 'a3',//67402131
+            singer: "云飞扬",
+            title: "如何理解既要政治过硬，也要本领高强？",
+            src: assetsPath + 'wKgJKFpfMnPwjvxDAAc_Tuk3g4Q083.m4a',//474958
+            isload: false
+        }
+            //, {
+            //    id: 'a4',
+            //    singer: "水木年华",
+            //    title: "一生有你",
+            //    src: assetsPath + '95484.m4a',
+            //    isload: false
+            //}
+        ]
         //var src = "taoyan.mp3";
+        //createjs.Sound.registerPlugins([createjs.HTMLAudioPlugin]);
 
-        //var loader = new createjs.LoadQueue(false);
-        //loader.installPlugin(createjs.Sound);
+        var loader = new createjs.LoadQueue(false);
+        loader.installPlugin(createjs.Sound);
         //loader.addEventListener("fileload", function () {
         //    console.log("end");
         //    //createjs.Sound.registerSound(manifest, "sound");//鍗曟枃浠跺姞杞藉畬鎴�
@@ -119,12 +110,219 @@
         //    });
         //});
         //loader.addEventListener("complete", loadComplete);
-        //loader.addEventListener("fileload", fileComplete);
+        //loader.addEventListener("fileload", handleFileLoad);
         //loader.addEventListener("error", handleFileError);
         //loader.addEventListener("fileprogress", handleFileProgress);
         //loader.addEventListener("progress", handleProgress);
-        //loader.on("complete", function () {
+        loader.on("fileload", handleFileLoad);
+        loader.on("error", handleFileError);
+        loader.on("fileprogress", handleFileProgress);
+        loader.on("progress", handleProgress);
+        loader.on("complete", loadComplete, this);
+        var theAudio;
+        var update;
+        var currentSong = 0;
+        var firstSong = currentSong;
+        var songIsPlaying = false;
+        var songIsPause = false;
 
+
+        var currSec = 0;
+        var playSec = 0;
+        
+
+        function playSound() {
+            if (!songIsPlaying) {
+                theAudio = createjs.Sound.play("a" + currentSong);
+                $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
+                updateArtist();
+                //theAudio.setVolume(1);
+                theAudio.on("complete", songFinishedPlaying, null, false);
+                update = setInterval(function () { updateUI() }, 20);
+                songIsPlaying = true;
+                songIsPause = false;
+            }
+        }
+        function pauseSound() {
+            if (theAudio != undefined) {
+                theAudio.paused = true;
+                songIsPause = true;
+            }
+            var openid = $('#openid').val();
+            currSec = playSec;
+            playSec = playSec.toFixed(0);
+            $.ajax({
+                url : '/front/timeapi/set',
+                type : 'get',
+                data : {
+                    openid:openid,
+                    second: playSec
+                },
+                success : function(result){
+                    console.log(result);
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+        }
+        function resumeSound() {
+            if (theAudio != undefined) {
+                //theAudio.resume();
+                theAudio.paused = false;
+                songIsPause = false;
+            }
+        }
+
+        //音乐播放完成
+        function songFinishedPlaying() {
+            var openid = $('#openid').val();
+            playSec = playSec.toFixed(0);
+            $.ajax({
+                url : '/front/timeapi/set',
+                type : 'get',
+                data : {
+                    openid: openid,
+                    second: playSec
+                },
+                success : function(result){
+                    console.log(result);
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+            //songIsPlaying = false;
+            //clearInterval(update);
+            //currentSong++;
+            //playSound();
+            playNext();
+            //updateArtist();
+        }
+        function playNext() {
+            currSec = 0;
+            if (theAudio != undefined) {
+                var curSongIndex = currentSong;
+                if (currentSong == manifest.length - 1) {
+                    currentSong = 0;
+                } else {
+                    currentSong++;
+                }
+                //alert(manifest[currentSong].isload)
+                if (manifest[currentSong].isload) {
+                    clearInterval(update);
+                    theAudio.stop();
+                    songIsPlaying = false;
+                    playSound();
+                } else {
+                    currentSong = curSongIndex;
+                    alert("未加载完成");
+                }
+                //updateArtist();
+            }
+        }
+
+        function playPrev() {
+            if (theAudio != undefined) {
+                if (currentSong == 0) {
+                    currentSong = manifest.length - 1;
+                } else {
+                    currentSong--;
+                }
+                clearInterval(update);
+                theAudio.stop();
+                songIsPlaying = false;
+                playSound();
+                //updateArtist();
+            }
+        }
+        function updateUI() {
+            var duration = theAudio.getDuration();
+            var pos = theAudio.getPosition();
+            var songPosition = (pos / duration) * 100;
+            $("#curProgress").css("width", songPosition + "%");
+
+            var time = pos / 1000;
+
+            playSec = time - currSec;
+
+
+            var min = Math.floor(time / 60);
+            var minDisplay = (min < 10) ? "0" + min : min;
+            var sec = Math.floor(time % 60);
+            var secDisplay = (sec < 10) ? "0" + sec : sec;
+            var amountPlayed = minDisplay + ":" + secDisplay;
+
+
+            var timeduration = duration / 1000;
+            var minduration = Math.floor(timeduration / 60);
+            var minDisplay = (minduration < 10) ? "0" + minduration : minduration;
+            var secduration = Math.floor(timeduration % 60);
+            var secDisplay = (secduration < 10) ? "0" + secduration : secduration;
+            var totalDuration = minDisplay + ":" + secDisplay;
+
+            $("#sound-time").text(amountPlayed + " / " + totalDuration);
+        }
+        function updateArtist() {
+            $("#sound-title").html("正在学习：" + manifest[currentSong].title);
+            $("#sound-singer").html("主讲：" + manifest[currentSong].singer);
+        }
+        //loader.setMaxConnections(5);
+        loader.maintainScriptOrder = true;
+        loader.loadManifest(manifest);
+        /**
+         * ******************************************************************
+         */
+        //处理单个文件加载
+        function handleFileLoad(event) {
+            console.log("[" + event.item.id + "]" + event.item.singer + " - " + event.item.title + "  文件类型: " + event.item.type + "  加载完成");
+            event.item.isload = true;
+
+            if (event.item.id == "a" + currentSong) {
+                var btn = $("#sound-play");
+                btn.children("i").removeClass("fa-circle-o-notch fa-spin").addClass("fa-play");
+                btn.addClass("activate").click(function () {
+                    if (songIsPlaying) {
+                        if (!songIsPause) {
+                            pauseSound();
+                            $(this).children("i").removeClass("fa-pause").addClass("fa-play");
+                            return;
+
+                        } else {
+                            resumeSound();
+                            $(this).children("i").removeClass("fa-play").addClass("fa-pause");
+                            return;
+                        }
+                    }
+                    playSound();
+                });
+                //playSound();
+            }
+            if (event.item.id == "a" + (firstSong + 1)) {
+                $("#sound-next").addClass("activate").click(function () {
+                    playNext();
+                });
+            }
+        }
+        //处理加载错误：大家可以修改成错误的文件地址，可在控制台看到此方法调用
+        function loadError(evt) {
+            console.log("加载出错！", evt.text);
+        }
+
+        //已加载完毕进度
+        function handleFileProgress(event) {
+
+        }
+
+        //全度资源加载完毕
+        function loadComplete(event) {
+            console.log("已加载完毕全部资源");
+            //$("#sound-next").addClass("activate").click(function () {
+            //    playNext();
+            //});
+            $("#sound-prev").addClass("activate").click(function () {
+                playPrev();
+            });
             //createjs.Sound.play("h5-demo-master/audio/107192078.m4a");
             //music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
             //createjs.Sound.registerSound(manifest, "sound");
@@ -140,85 +338,125 @@
             //    $(this).children("i").removeClass("fa-pause").addClass("fa-play");
 
             //});
-            //var btn = $("#sound-play");
-            //btn.click(function () {
-            //    // createjs.Sound.registerSounds(manifest, assetsPath);
-            //    //Sound.playHandler();
-            //    music_player = new Player($('#btn_play_music'), "h5-demo-master/audio/107192078.m4a");
-            //});
-            //$("#sound-next").click(function () {
-            //    Sound.next();
-            //});
-            //$("#sound-prev").click(function () {
-            //    Sound.prev();
-            //});
-
-        //}, this);
+        }
 
 
-        //loader.addEventListener("fileprogress", function (event) {
-        //    console.log("loaded", event.loaded, "progress", event.progress);//鍔犺浇杩涘害
-        //});
-        //loader.setMaxConnections(5);
-        //loader.maintainScriptOrder = true;
-        //loader.loadManifest(manifest);
+        function handleFileError(evt) {
+            console.log("error ", evt);
+            // An error occurred.
+        }
 
-        //var Sound = {}
-        //Sound.playHandler = function (src) {
-        //    if (Sound.curSound) {
-        //        if (!Sound.curSound.paused) {
-        //            Sound.pauseHandler();
-        //            $("#sound-play").children("i").removeClass("fa-pause").addClass("fa-play");
-        //        }
-        //        else {
-        //            Sound.resumeHandler();
-        //            $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
-        //        }
-        //        return;
+        function handleProgress(evt) {
+            // Progress happened.
+            //console.log("Event Loading: " + (loader.progress.toFixed(2) * 100) + "%");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var Sound = {}
+        Sound.playHandler = function (src) {
+            if (Sound.curSound) {
+                if (!Sound.curSound.paused) {
+                    Sound.pauseHandler();
+                    $("#sound-play").children("i").removeClass("fa-pause").addClass("fa-play");
+                }
+                else {
+                    Sound.resumeHandler();
+                    $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
+                }
+                return;
+            }
+            Sound.curSound = createjs.Sound.play(soundid); //createjs.Sound.play(src, createjs.Sound.INTERRUPT_LATE, 0, 0, -1);
+            $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
+        }
+        Sound.pauseHandler = function () {
+            Sound.curSound.paused = true;
+        }
+        Sound.resumeHandler = function () {
+            Sound.curSound.paused = false;
+        }
+        Sound.next = function () {
+            soundid++;
+            //alert(soundid);
+            Sound.curSound = createjs.Sound.play(soundid);
+        }
+        Sound.prev = function () {
+            soundid--;
+            //alert(soundid);
+            Sound.curSound = createjs.Sound.play(soundid);
+        }
+
+
+
+
+
+        //function playSound(audioBuffer) {
+        //    var AudioContext = window.AudioContext || window.webkitAudioContext;
+        //    var audioCtx;
+        //    var source;
+        //    try {
+        //        audioCtx = new AudioContext();
+        //        console.log(audioCtx)
+
+        //    } catch (e) {
+        //        alert('Your browser does not support AudioContext!');
+        //        console.log(e);
         //    }
-        //    Sound.curSound = createjs.Sound.play(soundid); //createjs.Sound.play(src, createjs.Sound.INTERRUPT_LATE, 0, 0, -1);
-        //    $("#sound-play").children("i").removeClass("fa-play").addClass("fa-pause");
-        //}
-        //Sound.pauseHandler = function () {
-        //    Sound.curSound.paused = true;
-        //}
-        //Sound.resumeHandler = function () {
-        //    Sound.curSound.paused = false;
-        //}
-        //Sound.next = function () {
-        //    soundid++;
-        //    alert(soundid);
-        //    Sound.curSound = createjs.Sound.play(soundid);
-        //}
-        //Sound.prev = function () {
-        //    soundid--;
-        //    alert(soundid);
-        //    Sound.curSound = createjs.Sound.play(soundid);
+        //    source = audioCtx.createBufferSource();
+        //    console.log(source)
+        //    source.buffer = audioBuffer;
+
+        //    source.connect(audioCtx.destination);
+        //    source.loop = false;
+
+        //    source.start(0);
         //}
 
-        //function handleFileError(evt) {
-        //    console.log("error ", evt);
-        //    // An error occurred.
-        //}
-
-        //function handleFileProgress(evt) {
-        //    // Progress happened.
-        //    console.log("Event File Loading: " + (loader.progress.toFixed(2) * 100) + "%");
-        //}
-
-        //function handleProgress(evt) {
-        //    // Progress happened.
-        //    console.log("Event Loading: " + (loader.progress.toFixed(2) * 100) + "%");
-        //}
-        
-        
     </script>
 </head>
 <body>
-    <!--<audio id="audio-player" style="width: 100%" src="h5-demo-master/audio/107192078.m4a" controls></audio>-->
-    <div class="header"><img src="images/i001.jpg" /></div>
+    <input id="openid" type="hidden" value="<%= openid %>">
+    <audio id="audio-player" style="width: 100%;display:none" controls>
+        <source src="audio/111.mp3" type="audio/mpeg" />
+        <source src="audio/ywgsbd.m4a" type="audio/mpeg" />
+    </audio>
+    <%- include common/header.ejs %>
     <div class="study-area" id="jquery_jplayer_2">
-        <h5 id="sound-title">正在学习：领导干部要做践行“三严三实”的模范</h5>
+        <h5 id="sound-title">正在学习：党要管党丝毫不能松懈，从严治党一刻不能放松</h5>
         <div class="study-progress">
             <span class="i leftI"></span><span class="line"><span id="curProgress" class="curProgress" style="width:0%"><i class="bar"></i></span></span><span class="i"></span>
 
@@ -227,13 +465,13 @@
             <div class="row">
                 <div class="col-1"><a class="btn-playlist"><img src="images/icon001.jpg" /><p>播放列表</p></a></div>
                 <div class="col-2"><a id="sound-prev" class="btn-prev" href="javascript:void(0)"><i class="fa fa-step-backward" aria-hidden="true"></i></a></div>
-                <div class="col-3"><a id="sound-play" class="btn-play" href="javascript:void(0)"><i class="fa fa-play fa-fw fa-align-center"></i></a></div>
+                <div class="col-3"><a id="sound-play" class="btn-play" href="javascript:void(0)"><i class="fa fa-fw fa-circle-o-notch fa-spin"></i></a></div>
                 <div class="col-4"><a id="sound-next" class="btn-next" href="javascript:void(0)"><i class="fa fa-step-forward" aria-hidden="true"></i></a></div>
                 <div class="col-5"><a class="btn-clock"><img src="images/icon002.jpg" /><p>定时关闭</p></a></div>
 
             </div>
         </div>
-        <div class="study-info"><span class="s-box s-icon-zj" id="sound-singer">主讲：胡黎</span><span id="sound-time" class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+        <div class="study-info"><span class="s-box s-icon-zj" id="sound-singer">主讲：云飞扬</span><span id="sound-time" class="s-box s-icon-sj marginLeft10">时长：3分钟</span></div>
     </div>
     <div class="borderLine"></div>
     <div class="pub-box">
@@ -243,40 +481,40 @@
                 <div class="item selected">1</div>
                 <div class="item">2</div>
                 <div class="item">3</div>
-                <div class="item">4</div>
+               <!--<div class="item">4</div>-->
             </div>
         </div>
         <div id="study_content_box" class="content-box owl-carousel owl-theme" data-ride="carousel">
             <div class="item">
-                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="pic-thumb"><a href="studytasklist"><img src="http://fdfs.xmcdn.com/group37/M04/4E/95/wKgJoFo-LWfi1PWiAAFz9D4q9Kw902_web_meduim.jpg" /></a></div>
                 <div class="c-box">
-                    <h3>1湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
-                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
-                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                    <h3><a href="studytasklist.html">经济会议新思想新提法</a></h3>
+                    <div class="desc">中央经济工作会议</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：1小时33分钟</span></div>
                 </div>
             </div>
             <div class="item">
-                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="pic-thumb"><a href="studytasklist"><img src="http://fdfs.xmcdn.com/group37/M06/67/6D/wKgJoVo_O4fTddRZAACuZkpE12U225_web_meduim.jpg" /></a></div>
                 <div class="c-box">
-                    <h3>2湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
-                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
-                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                    <h3><a href="studytasklist">经济会议民生新看点</a></h3>
+                    <div class="desc">中央经济工作会议</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：1小时36分钟</span></div>
                 </div>
             </div>
             <div class="item">
-                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="pic-thumb"><a href="studytasklist"><img src="http://fdfs.xmcdn.com/group36/M02/B9/28/wKgJUlpMUWjiDUczAAH_eAjJfAk407_web_meduim.jpg" /></a></div>
                 <div class="c-box">
-                    <h3>3湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
-                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
-                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                    <h3><a href="studytasklist">我们如何实现乡村振兴</a></h3>
+                    <div class="desc">乡村振兴战略</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：59分钟</span></div>
                 </div>
             </div>
             <div class="item">
-                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="pic-thumb"><a href="studytasklist"><img src="http://fdfs.xmcdn.com/group17/M04/DF/B3/wKgJJFpV0GjSBX9hAADOdMyFzIA721_web_meduim.jpg" /></a></div>
                 <div class="c-box">
-                    <h3>4湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
-                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
-                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                    <h3><a href="studytasklist">习总书记对党员干部的新要求</a></h3>
+                    <div class="desc">解读习总书记“1.5”重要讲话</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：51分钟</span></div>
                 </div>
             </div>
         </div>
@@ -289,11 +527,11 @@
         </div>
         <div class="content-box">
             <div class="item">
-                <div class="pic-thumb"><img src="images/i003.jpg" /></div>
+                <div class="pic-thumb"><a href="studylist"><img src="http://fdfs.xmcdn.com/group33/M03/E1/97/wKgJUVoFatTgsw7IAAHOjDBToSk048_mobile_small.jpg" /></a></div>
                 <div class="c-box">
-                    <h3>湖北最冷的时候到了! 武汉要下8天雪是真的吗</h3>
-                    <div class="desc">湖北最冷的时候到了! 武汉要下8天雪是真的吗？湖北最冷的时候到了! 武汉要下8天雪是真的吗？</div>
-                    <div class="otherInfo"><span class="s-box s-icon-zj">主讲：胡黎</span><span class="s-box s-icon-sj marginLeft10">时长：1小时30分钟</span></div>
+                    <h3><a href="studylist">习近平重要讲话百日学</a></h3>
+                    <div class="desc">第三届全国党员教育培训教材</div>
+                    <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：9小时20分钟</span></div>
                 </div>
             </div>
         </div>
@@ -319,5 +557,55 @@
     </div>
     <div class="height50"></div>
     <%- include common/footer.ejs %>
+    <script src="js/lib/juicer.js"></script>
+    <script type="text/template" id="item-tpl">
+    {@each list as item}
+    <div class="item" >
+        <div class="pic-thumb"><a href="studytasklist?couid=${item.couid}&title=${item.title}&intro=${item.intro}"><img src="${item.coverUrlMiddle}" /></a></div>
+        <div class="c-box">
+            <h3><a href="studytasklist?couid=${item.couid}&title=${item.title}&intro=${item.intro}">${item.title}</a></h3>
+            <div class="desc">${item.intro}</div>
+            <div class="otherInfo"><span class="s-box s-icon-zj">喜马拉雅小红花</span><span class="s-box s-icon-sj marginLeft10">时长：1小时33分钟</span></div>
+        </div>
+    </div>
+    {@/each}
+    </script>
+
+     <script>
+        $(document).ready(function() {
+            var tpl = juicer($('#item-tpl').html());
+            $.ajax({
+                url : '/audio/course.json',
+                type : 'get',
+                dataType : 'json',
+                success : function(result){
+                    var html = '';
+                    html = tpl.render({list:result});
+                    $('#study_content_box').html(html);
+                    var owl = $("#study_content_box").owlCarousel({
+                        items: 1,
+                        loop: true,
+                        autoplay: true,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: true,
+                        transitionStyle: "fade",
+                        dots: true,
+
+                    }).on('changed.owl.carousel', function (event) {
+                        var page = event.page.index;
+                        $(".pub-swich-items .item").removeClass("selected");
+                        $(".pub-swich-items .item:eq(" + page + ")").addClass("selected");
+                    });
+                    $(".pub-swich-items .item").click(function () {
+                        var index = $(this).index();
+                        owl.trigger('to.owl.carousel', index);
+                    });
+                },
+                error : function(err){
+                    console.log(err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
